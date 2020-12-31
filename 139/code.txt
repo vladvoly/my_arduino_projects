@@ -1,0 +1,138 @@
+/*
+СХЕМА: https://i.imgur.com/lL1BZTG.png
+
+Список товаров:
+• Arduino NANO v3: http://ali.pub/3y70kz
+• RGB LED: http://ali.pub/5aeve4
+• Датчик влажности почвы: http://ali.pub/4xz2wl
+• Тактовые кнопки: http://ali.pub/5aevfh
+• Провода: http://ali.pub/3y86fx
+• Резисторы: http://ali.pub/3y80ej
+• Водяная помпа: http://ali.pub/57ksxk
+• Mosfet IRFZ44N: http://ali.pub/3ydijc
+*/
+
+#include "LowPower.h"
+#include "Wire.h"
+#include "Eeprom24C01_02.h"
+
+#define EEPROM_ADDRESS  0x50
+static Eeprom24C01_02 eeprom(EEPROM_ADDRESS);
+
+#define delay_led 500
+#define pompa_delay 1250
+
+#define sensor A0
+#define sensor_power 5
+#define pompa 4
+#define pompa_led 13
+
+#define led_dot 7
+#define led_ten 9
+#define led_one 8
+#define button 2
+
+bool val_b = 0;
+bool val_c = 0;
+bool start_flag = 0;
+bool edit_flag = 0;
+byte value = 0;
+byte dry = 0;            //значение в %
+unsigned long m1 = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(sensor, INPUT);
+  pinMode(sensor_power, OUTPUT);
+  pinMode(pompa, OUTPUT);
+  pinMode(pompa_led, OUTPUT);
+
+  pinMode(led_ten, OUTPUT);
+  pinMode(led_one, OUTPUT);
+  pinMode(led_dot, OUTPUT);
+
+  eeprom.initialize();
+  delay(200);
+  dry = eeprom.readByte(0);
+  delay(10);
+
+  val_b = digitalRead(button);
+  if (val_b == 1) {
+    start_flag = 1;
+    led_info(dry);                                    //узнать текущее значение сухости почвы
+    dry = 0;
+  }
+  else start_flag = 0;
+
+  delay (60000);
+}
+
+void led_info(byte a) {
+  for (int i = 0; i < a / 10; i++) {
+    digitalWrite(led_ten, 1);
+    delay(delay_led);
+    digitalWrite(led_ten, 0);
+    delay(delay_led);
+  }
+
+  digitalWrite(led_dot, 1);
+  delay(100);
+  digitalWrite(led_dot, 0);
+  delay(100);
+
+  for (int n = 0; n < a % 10; n++) {
+    digitalWrite(led_one, 1);
+    delay(delay_led);
+    digitalWrite(led_one, 0);
+    delay(delay_led);
+  }
+}
+
+void loop() {
+
+  if (start_flag == 1) {                              //меню настройки датчика сухости
+    val_c = digitalRead(button);
+    if (val_c == 1 && millis() - m1 > 150) {
+      if (dry >= 99) dry = 0;
+      dry += 1;
+      value = 0;
+      m1 = millis();
+    }
+    if (val_c == 0 && millis() - m1 > 5000) {
+      value += 1;
+      led_info(dry);
+      m1 = millis();
+    }
+    if (val_c == 0 && value == 3) {
+      value = 0;
+      start_flag = 0;
+      eeprom.writeByte(0, dry);
+      delay(10);
+    }
+
+  } else if (start_flag == 0) {                     //главное рабочее меню
+
+    delay(10);
+    LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
+    val_b = digitalRead(button);
+
+    digitalWrite(sensor_power, 1);
+    delay(100);
+    value = map(analogRead(sensor), 0, 1023, 0, 100);     //конвертируем в проценты от 0 до 100
+    value = constrain(value, 0, 100);
+    digitalWrite(sensor_power, 0);
+    delay(50);
+
+    if (val_b == 1) {
+      led_info(value);
+    }
+
+    if (value >= dry) {
+      digitalWrite(pompa, 1);
+      digitalWrite(pompa_led, 1);
+      delay (pompa_delay);
+      digitalWrite(pompa, 0);
+      digitalWrite(pompa_led, 0);
+    }
+  }
+}
