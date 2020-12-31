@@ -1,0 +1,408 @@
+/*
+СХЕМА: https://i.imgur.com/iVwusq6.jpg
+
+Список компонентов:
+• Зуммер: http://ali.pub/4xz3rw
+• Arduino NANO v3: http://ali.pub/3y70kz
+• Провода: http://ali.pub/3y86fx
+• Резисторы: http://ali.pub/3y80ej
+• RGB LED: http://ali.pub/5aeve4
+• Макетная плата: http://ali.pub/3y86f5
+*/
+
+#define led 9
+#define buzzer 10
+
+#define d_dot 100                   //время точки (100 мс)
+#define d_dash 300                  //время тире/растояния между буквами - время точки * 3
+#define d_space 400                 //время между словами - время точки * 4 - адаптированный вариант под данный пример.
+//#define d_space 700                 //время между словами - время точки * 7
+
+String ReadData = "";
+bool ReadFlag = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(led, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+}
+
+void ReadSerial() {
+  while (Serial.available() > 0) {            // Пока есть данные - считываем
+    ReadData += (char)Serial.read();
+    ReadFlag = true;                           // Данные считаны - поднимаем флаг
+    delay(2);
+    //Serial.println(millis());
+  } 
+}
+
+void ClearReadSerial() {
+  if (ReadFlag) {                              // Флаг = 1
+    //Serial.println(millis());
+    Serial.println(ReadData);
+    ReadData = "";                             // Очистить
+    ReadFlag = false;                          // Флаг = 0
+  }
+}
+
+void led_print(int a, int b) {
+  digitalWrite(led, 1);
+  digitalWrite(buzzer, 1);
+  delay(a);
+  digitalWrite(led, 0);
+  digitalWrite(buzzer, 0);
+  delay(b);
+
+}
+//abcdefghijklmnopqrstuvwxyz1234567890
+void pa() {
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dash);
+}
+void pb() {
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dash);
+}
+void pc() {
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dash);
+}
+void pd() {
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dash);
+}
+void pe() {
+  led_print(d_dot, d_dash);
+}
+void pf() {
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dash);
+}
+void pg() {
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dash);
+}
+void ph() {
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dash);
+}
+void pi() {
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dash);
+}
+void pj() {
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dash);
+}
+void pk() {
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dash);
+}
+void pl() {
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dash);
+}
+void pm() {
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dash);
+}
+void pn() {
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dash);
+}
+void po() {
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dash);
+}
+void pp() {
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dash);
+}
+void pq() {
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dash);
+}
+void pr() {
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dash);
+}
+void ps() {
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dash);
+}
+void pt() {
+  led_print(d_dash, d_dash);
+}
+void pu() {
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dash);
+}
+void pv() {
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dash);
+}
+void pw() {
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dash);
+}
+void px() {
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dash);
+}
+void py() {
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dash);
+}
+void pz() {
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dash);
+}
+void p1() {
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dash);
+}
+void p2() {
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dash);
+}
+void p3() {
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dash);
+}
+void p4() {
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dash);
+}
+void p5() {
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dash);
+}
+void p6() {
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dash);
+}
+void p7() {
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dash);
+}
+void p8() {
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dash);
+}
+void p9() {
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dash);
+}
+void p0() {
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dash);
+}
+
+void s1() {
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dash);
+}
+void s2() {
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dash);
+}
+void s3() {
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dash);
+}
+void s4() {
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dash);
+}
+void s5() {
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dash);
+}
+void s6() {
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dash);
+}
+void s7() {
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dash);
+}
+void s8() {
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dash);
+}
+void s9() {
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dash);
+}
+void s10() {
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dash);
+}
+void s11() {
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dash, d_dot);
+  led_print(d_dot, d_dot);
+  led_print(d_dash, d_dash);
+}
+
+void loop() {
+  ReadSerial();
+  ///
+  for (int i = 0; i < ReadData.length(); i++) {
+    if (ReadData[i] == ' ') delay(d_space);
+    //abcdefghijklmnopqrstuvwxyz1234567890
+    else if (ReadData[i] == '.') s1();
+    else if (ReadData[i] == ',') s2();
+    else if (ReadData[i] == ':') s3();
+    else if (ReadData[i] == ';') s4();
+    else if (ReadData[i] == '—') s5();
+    else if (ReadData[i] == '/') s6();
+    else if (ReadData[i] == '_') s7();
+    else if (ReadData[i] == '?') s8();
+    else if (ReadData[i] == '!') s9();
+    else if (ReadData[i] == '+') s10();
+    else if (ReadData[i] == '(' || ReadData[i] == ')') s11();
+    //
+    else if (ReadData[i] == '1') p1();
+    else if (ReadData[i] == '2') p2();
+    else if (ReadData[i] == '3') p3();
+    else if (ReadData[i] == '4') p4();
+    else if (ReadData[i] == '5') p5();
+    else if (ReadData[i] == '6') p6();
+    else if (ReadData[i] == '7') p7();
+    else if (ReadData[i] == '8') p8();
+    else if (ReadData[i] == '9') p9();
+    else if (ReadData[i] == '0') p0();
+    //
+    else if (ReadData[i] == 'A' || ReadData[i] == 'a') pa();
+    else if (ReadData[i] == 'B' || ReadData[i] == 'b') pb();
+    else if (ReadData[i] == 'C' || ReadData[i] == 'c') pc();
+    else if (ReadData[i] == 'D' || ReadData[i] == 'd') pd();
+    else if (ReadData[i] == 'E' || ReadData[i] == 'e') pe();
+    else if (ReadData[i] == 'F' || ReadData[i] == 'f') pf();
+    else if (ReadData[i] == 'G' || ReadData[i] == 'g') pg();
+    else if (ReadData[i] == 'H' || ReadData[i] == 'h') ph();
+    else if (ReadData[i] == 'I' || ReadData[i] == 'i') pi();
+    else if (ReadData[i] == 'J' || ReadData[i] == 'j') pj();
+    else if (ReadData[i] == 'K' || ReadData[i] == 'k') pk();
+    else if (ReadData[i] == 'L' || ReadData[i] == 'l') pl();
+    else if (ReadData[i] == 'M' || ReadData[i] == 'm') pm();
+    else if (ReadData[i] == 'N' || ReadData[i] == 'n') pn();
+    else if (ReadData[i] == 'O' || ReadData[i] == 'o') po();
+    else if (ReadData[i] == 'P' || ReadData[i] == 'p') pp();
+    else if (ReadData[i] == 'Q' || ReadData[i] == 'q') pq();
+    else if (ReadData[i] == 'R' || ReadData[i] == 'r') pr();
+    else if (ReadData[i] == 'S' || ReadData[i] == 's') ps();
+    else if (ReadData[i] == 'T' || ReadData[i] == 't') pt();
+    else if (ReadData[i] == 'U' || ReadData[i] == 'u') pu();
+    else if (ReadData[i] == 'V' || ReadData[i] == 'v') pv();
+    else if (ReadData[i] == 'W' || ReadData[i] == 'w') pw();
+    else if (ReadData[i] == 'X' || ReadData[i] == 'x') px();
+    else if (ReadData[i] == 'Y' || ReadData[i] == 'y') py();
+    else if (ReadData[i] == 'Z' || ReadData[i] == 'z') pz();
+  }
+  ClearReadSerial();
+  delay(1000);
+}
