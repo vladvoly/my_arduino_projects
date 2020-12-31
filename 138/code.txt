@@ -1,0 +1,56 @@
+/*
+СХЕМА: https://i.imgur.com/nn1OADI.png
+
+Список компонентов:
+• Arduino NANO v3: http://ali.pub/3y70kz
+• Провода: http://ali.pub/3y86fx
+• Резисторы: http://ali.pub/3y80ej
+• RGB LED: http://ali.pub/5aeve4
+• Макетная плата: http://ali.pub/3y86f5
+*/
+
+#define led_1 9
+#define led_2 10
+#define led_3 11
+
+#define delay1 100
+#define delay2 250
+#define delay3 500
+
+unsigned long led1 = 0;
+unsigned long led2 = 0;
+unsigned long led3 = 0;
+
+bool led_state[3] = {0,0,0};
+
+void setup() {
+  pinMode(led_1, OUTPUT);
+  pinMode(led_2, OUTPUT);
+  pinMode(led_3, OUTPUT);
+}
+
+void runled(byte a, bool b, byte c) {
+  led_state[a] = b;
+  digitalWrite(c, led_state[a]);
+}
+
+
+void loop() {
+  if (millis() - led1 > delay1) {
+    led1 = millis();
+    if (led_state[0] == 0) runled(0,1,led_1);
+    else runled(0,0,led_1);
+  }
+
+  if (millis() - led2 > delay2) {
+    led2 = millis();
+    if (led_state[1] == 0) runled(1,1,led_2);
+    else runled(1,0,led_2);
+  }
+
+  if (millis() - led3 > delay3) {
+    led3 = millis();
+    if (led_state[2] == 0) runled(2,1,led_3);
+    else runled(2,0,led_3);
+  }
+}
