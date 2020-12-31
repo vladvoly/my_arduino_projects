@@ -1,0 +1,77 @@
+/*
+СХЕМА - ПУЛЬТ: https://i.imgur.com/WobidNh.jpg
+
+Список компонентов:
+• Arduino NANO v3: http://ali.pub/3y70kz
+• Провода: http://ali.pub/3y86fx
+• Резисторы: http://ali.pub/3y80ej
+• Адаптер для nRF24L01+: http://ali.pub/57ks47
+• NRF24L01+: http://ali.pub/57ksgu
+• Переменные резисторы 10К Ом: http://ali.pub/57kssw
+• Макетная плата: http://ali.pub/3y86f5
+*/
+
+#include <SPI.h>          // библиотека для работы с шиной SPI
+#include "nRF24L01.h"     // библиотека радиомодуля
+#include "RF24.h"         // ещё библиотека радиомодуля
+
+RF24 radio(9, 10);
+byte address[][6] = {"1Node", "2Node", "3Node", "4Node", "5Node", "6Node"}; //возможные номера труб
+
+
+#define res A0
+#define delay_time 20
+
+
+unsigned long old_time = 0;
+int val_pot1 = 0;
+int val_pot1_old = 0;
+
+void setup() {
+  pinMode(res, INPUT);
+  Serial.begin(9600);
+
+  radio.begin(); //активировать модуль
+  radio.setAutoAck(1);          //режим подтверждения приёма, 1 вкл 0 выкл
+  radio.setRetries(0, 15);      //(время между попыткой достучаться, число попыток)
+  radio.enableAckPayload();     //разрешить отсылку данных в ответ на входящий сигнал
+  radio.setPayloadSize(32);     //размер пакета, в байтах
+
+  radio.openWritingPipe(address[0]);   //мы - труба 0, открываем канал для передачи данных
+  radio.setChannel(0x5a);  //выбираем канал (в котором нет шумов!)
+
+  radio.setPALevel (RF24_PA_MAX); //уровень мощности передатчика. На выбор RF24_PA_MIN, RF24_PA_LOW, RF24_PA_HIGH, RF24_PA_MAX
+  radio.setDataRate (RF24_250KBPS); //скорость обмена. На выбор RF24_2MBPS, RF24_1MBPS, RF24_250KBPS
+  //должна быть одинакова на приёмнике и передатчике!
+  //при самой низкой скорости имеем самую высокую чувствительность и дальность!!
+
+  radio.powerUp(); //начать работу
+  radio.stopListening();  //не слушаем радиоэфир, мы передатчик
+}
+
+int run_avr_filter(int a){
+  static float filV = 0;
+  filV += (a - filV) * 0.09;
+  return filV;
+}
+
+void loop() {
+  if (millis() - old_time >= delay_time) {
+    old_time = millis();
+    val_pot1 = map(analogRead(res), 0, 1023, -240, 240);
+    val_pot1 = constrain(val_pot1, -240, 240);
+    
+    /*Serial.print(val_pot1);
+    Serial.print(',');
+    Serial.println(run_avr_filter(val_pot1));*/
+    
+    val_pot1 = run_avr_filter(val_pot1);
+    
+    if (val_pot1 != val_pot1_old) {
+      radio.powerUp();
+      radio.write(&val_pot1, sizeof(val_pot1));
+      radio.powerDown();
+    }
+    val_pot1_old = val_pot1;
+  }
+}
