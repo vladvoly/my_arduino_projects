@@ -1,0 +1,58 @@
+/*
+СХЕМА: https://i.imgur.com/kS8t0bD.jpg
+
+Список компонентов:
+• Водяная помпа: http://ali.pub/57ksxk
+• Датчик влажности почвы: http://ali.pub/4xz2wl
+• Mosfet IRFZ44N: http://ali.pub/3ydijc
+• Arduino NANO v3: http://ali.pub/3y70kz
+• Провода: http://ali.pub/3y86fx
+• Резисторы: http://ali.pub/3y80ej
+*/
+
+#include "LowPower.h"
+
+#define sensor A0
+#define sensor_power 5
+#define pompa 4
+
+#define dry 47              //значение в %
+#define led 13
+
+byte value = 0;
+byte pump_num = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(sensor, INPUT);
+  pinMode(pompa, OUTPUT);
+  pinMode(led, OUTPUT);
+  pinMode(sensor_power, OUTPUT);
+  delay (60000);
+}
+
+void loop() {
+  LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
+
+  digitalWrite(sensor_power, 1);
+  delay(100);
+  value = map(analogRead(sensor), 0, 1023, 0, 100);     //конвертируем в проценты от 0 до 100
+  value = constrain(value, 0, 100);
+  digitalWrite(sensor_power, 0);
+
+  Serial.print("Dry soil - ");
+  Serial.print(value);
+  Serial.print(" % ; ");
+  Serial.print("Num. of pump starts ");
+  Serial.println(pump_num);
+  delay(100);
+
+  if (value >= dry) {
+    pump_num = pump_num + 1;
+    digitalWrite(pompa, 1);
+    digitalWrite(led, 1);
+    delay (1250);
+    digitalWrite(pompa, 0);
+    digitalWrite(led, 0);
+  }
+}
