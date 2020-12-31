@@ -1,7 +1,7 @@
 /*
 СХЕМА: https://i.imgur.com/lL1BZTG.png
 
-Список товаров:
+Список компонентов:
 • Arduino NANO v3: http://ali.pub/3y70kz
 • RGB LED: http://ali.pub/5aeve4
 • Датчик влажности почвы: http://ali.pub/4xz2wl
