@@ -1,0 +1,105 @@
+/*
+СХЕМА: https://i.imgur.com/pnRNOnz.jpg
+
+Список компонентов:
+• Arduino NANO v3: http://ali.pub/3y70kz
+• RGB LED: http://ali.pub/5aeve4
+• Датчик влажности почвы: http://ali.pub/5aevf3
+• Тактовые кнопки: http://ali.pub/5aevfh
+• Провода: http://ali.pub/3y86fx
+• Резисторы: http://ali.pub/3y80ej
+• Водяная помпа: http://ali.pub/57ksxk
+• Mosfet IRFZ44N: http://ali.pub/3ydijc
+*/
+
+#include "LowPower.h"
+
+#define dry 74              //значение в %
+#define delay_led 500
+#define pompa_delay 1250
+
+#define sensor A0
+#define sensor_power 5
+#define pompa 4
+#define pompa_led 13
+
+#define led_dot 7
+#define led_ten 9
+#define led_one 8
+#define button 2
+
+bool val_b = 0;
+byte value = 0;
+byte pump_num = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(sensor, INPUT);
+  pinMode(pompa, OUTPUT);
+  pinMode(pompa_led, OUTPUT);
+
+  pinMode(led_ten, OUTPUT);
+  pinMode(led_one, OUTPUT);
+  pinMode(led_dot, OUTPUT);
+
+  pinMode(sensor_power, OUTPUT);
+  delay (2000);
+}
+
+void loop() {
+  LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
+
+  val_b = digitalRead(button);
+
+  digitalWrite(sensor_power, 1);
+  delay(100);
+  value = map(analogRead(sensor), 0, 1023, 0, 100);     //конвертируем в проценты от 0 до 100
+  value = constrain(value, 0, 100);
+  digitalWrite(sensor_power, 0);
+
+  Serial.print(value / 10);
+  Serial.print(" -- ");
+  Serial.print(value % 10);
+  Serial.print(" ; ");
+
+  Serial.print("button ");
+  Serial.print(val_b);
+  Serial.print(" ; ");
+
+  Serial.print("Dry soil - ");
+  Serial.print(value);
+  Serial.print(" % ; ");
+  Serial.print("Num. of pump starts ");
+  Serial.println(pump_num);
+  delay(100);
+
+  if (val_b == 1) {
+    for (int i = 0; i < value / 10; i++) {
+      digitalWrite(led_ten, 1);
+      delay(delay_led);
+      digitalWrite(led_ten, 0);
+      delay(delay_led);
+    }
+    
+    digitalWrite(led_dot, 1);
+    delay(100);
+    digitalWrite(led_dot, 0);
+    delay(100);
+    
+    for (int n = 0; n < value % 10; n++) {
+      digitalWrite(led_one, 1);
+      delay(delay_led);
+      digitalWrite(led_one, 0);
+      delay(delay_led);
+    }
+  }
+
+  if (value >= dry) {
+    pump_num = pump_num + 1;
+    digitalWrite(pompa, 1);
+    digitalWrite(pompa_led, 1);
+    delay (pompa_delay);
+    digitalWrite(pompa, 0);
+    digitalWrite(pompa_led, 0);
+  }
+}
