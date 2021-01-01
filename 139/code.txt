@@ -1,5 +1,5 @@
 /*
-СХЕМА: https://i.imgur.com/lL1BZTG.png
+СХЕМА: https://i.imgur.com/vx91056.jpg
 
 Список компонентов:
 • Arduino NANO v3: http://ali.pub/3y70kz
