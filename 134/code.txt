@@ -1,5 +1,5 @@
 /*
-СХЕМА: https://i.imgur.com/kS8t0bD.jpg
+СХЕМА: https://i.imgur.com/XfrDTx5.jpg
 
 Список компонентов:
 • Водяная помпа: http://ali.pub/57ksxk
