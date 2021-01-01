@@ -1,0 +1,168 @@
+/*
+СХЕМА: https://i.imgur.com/7g9NzOR.jpg
+
+Список компонентов:
+• RFID Reader: http://ali.pub/4xz3vl
+• NFC наклейки: http://ali.pub/4xz41f
+• Micro SD card модуль: http://ali.pub/3y8y15
+• LCD дисплей 1602: http://ali.pub/3y7y7z
+• Часы DS3231: http://ali.pub/4xz2ug
+• Arduino nano v3: http://ali.pub/3y70kz
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Провода: http://ali.pub/3y86fx
+*/
+
+#define RST_PIN 9
+#define SS_PIN D10
+#include <SPI.h>
+#include <SD.h>
+#include <MFRC522.h>
+#include <Wire.h>
+#include <DS3231.h>
+#include <LiquidCrystal_I2C.h>
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+MFRC522 mfrc522(SS_PIN, RST_PIN);  // Create MFRC522 instance
+
+DS3231 clock;
+RTCDateTime dt;
+File myFile;
+
+int uid_sum = 0;
+int uid_sum_old = 0;
+
+const char *names[]  = {
+  "H. Potter",            // 0
+  "D. Toretto",           // 1
+  "W. White",             // 2
+  "A. Stark"              // 3
+};
+
+int card_num[4] = {
+  728,
+  724,
+  720,
+  716
+};
+
+int group_num[4] = {
+  101,
+  102,
+  103,
+  105
+};
+
+void setup()
+{
+  Serial.begin(9600);
+
+  // Initialize DS3231
+  Serial.println("Initialize DS3231");;
+  clock.begin();
+
+  // Set sketch compiling time
+  //clock.setDateTime(__DATE__, __TIME__);
+
+  Serial.print("Initializing SD card...");
+  if (!SD.begin(4))                                             //4 пин на плате Arduino Nano and CS on SD Card
+  {
+    Serial.println("initialization failed!");
+    return;
+  }
+  Serial.println("initialization done.");
+
+  lcd.init();                 //инициализация LCD (подготовка к работе)
+  lcd.backlight();
+
+  SPI.begin();      // Init SPI bus
+  mfrc522.PCD_Init();   // Init MFRC522
+  mfrc522.PCD_DumpVersionToSerial();  // Show details of PCD - MFRC522 Card Reader details
+  Serial.println(F("Scan PICC to see UID, SAK, type, and data blocks..."));
+
+  delay(50);
+  dt = clock.getDateTime();
+
+  delay(50);
+  lcd.clear();
+  lcd.setCursor(11, 0);
+  lcd.print(dt.hour);
+  lcd.print(":");
+  lcd.print(dt.minute);
+  lcd.setCursor(0, 0);
+  lcd.print(dt.day);
+  lcd.print("/");
+  lcd.print(dt.month);
+  lcd.print("/");
+  lcd.print(dt.year);
+  lcd.setCursor(4, 1);
+  lcd.print("WELCOME!");
+}
+
+void print_sdcard(int a) {
+  myFile = SD.open("test.txt", FILE_WRITE);
+  if (myFile) {
+    Serial.print("Writing to test.txt...");
+
+    myFile.print(names[a]);
+    myFile.print(" - ");
+    myFile.print(group_num[a]);
+    myFile.print(" group");
+    myFile.print(" --- ");
+    myFile.print(dt.hour);
+    myFile.print(":");
+    myFile.print(dt.minute);
+    myFile.print(" --- ");
+    myFile.print(dt.day);
+    myFile.print("/");
+    myFile.print(dt.month);
+    myFile.print("/");
+    myFile.println(dt.year);
+
+    myFile.close();
+    Serial.println("done.");
+  }
+  else {
+    Serial.println("error opening test.txt");
+  }
+}
+
+void print_lcd(int a) {
+  lcd.clear();
+  lcd.setCursor(12, 0);
+  lcd.print(dt.day);
+  lcd.print("/");
+  lcd.print(dt.month);
+  lcd.setCursor(0, 0);
+  lcd.print(names[a]);
+  lcd.setCursor(11, 1);
+  lcd.print(dt.hour);
+  lcd.print(":");
+  lcd.print(dt.minute);
+  lcd.setCursor(0, 1);
+  lcd.print(group_num[a]);
+  lcd.print(" group");
+}
+
+void loop()
+{
+  uid_sum = 0;
+  if ( ! mfrc522.PICC_IsNewCardPresent()) {
+    dt = clock.getDateTime();
+    return;
+  }
+  if ( ! mfrc522.PICC_ReadCardSerial()) {
+    return;
+  }
+
+  for (byte i = 0; i < mfrc522.uid.size; i++) {
+    uid_sum += mfrc522.uid.uidByte[i];
+  }
+
+  for (int i = 0; i < 4; i++) {
+    if (uid_sum == card_num[i] && uid_sum_old != uid_sum) {
+      print_lcd(i);
+      print_sdcard(i);
+    }
+  }
+  uid_sum_old = uid_sum;
+}
