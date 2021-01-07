@@ -1,0 +1,99 @@
+/*
+СХЕМА: https://i.imgur.com/bXpLqBg.jpg
+
+Список компонентов:
+• Индикатор TM1637 LED: http://ali.pub/4xz3ik
+• Часы DS3231: http://ali.pub/4xz2ug
+• Погодный сенсор BME280: http://ali.pub/3ydpos
+• Arduino nano v3: http://ali.pub/3y70kz
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Провода: http://ali.pub/3y86fx
+*/
+
+
+#include <Wire.h>
+#include <DS3231.h>
+#include <Arduino.h>
+#include <TM1637Display.h>
+
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BME280.h>
+
+#define SEALEVELPRESSURE_HPA (1013.25)
+Adafruit_BME280 bme; // I2C
+
+#define CLK 6
+#define DIO 7
+TM1637Display display(CLK, DIO);
+
+int h1 = 0;
+int m1 = 0;
+int my_clock = 1111;
+bool flag = 0;
+unsigned long millis_dots = 0;
+int delay_dots = 1000;
+byte delay_clock = 0;
+byte delay_temp = 0;
+byte temp_display = 0;
+byte hum_display = 0;
+bool var = 0;
+DS3231 clock;
+RTCDateTime dt;
+
+void setup() {
+  Serial.begin(9600);
+  clock.begin();
+  display.clear();
+  display.setBrightness(0x0f);
+  bool status;
+  status = bme.begin();
+  if (!status) {
+    Serial.println("Could not find a valid BME280 sensor, check wiring!");
+    while (1);
+  }
+}
+
+void loop() {
+  if (millis() - millis_dots > delay_dots) {
+    millis_dots = millis();
+    if (delay_temp >= 60 && delay_temp <= 70) var = 1;
+    else var = 0;
+    switch (var) {
+      case 0:
+        if (flag == 1) {
+          flag = 0;
+          display.showNumberDecEx(my_clock, 0b01000000, false);
+        } else {
+          flag = 1;
+          display.showNumberDecEx(my_clock, 0b00000000, false);
+        }
+        break;
+      case 1:
+        if (flag == 1) {
+          flag = 0;
+          display.showNumberDec(temp_display, true, 2, 0);
+        } else {
+          flag = 1;
+          display.showNumberDec(hum_display, true, 2, 2);
+        }
+        break;
+    }
+
+    delay_clock = delay_clock + 1;
+    delay_temp = delay_temp + 1;
+
+    if (delay_clock == 5) {
+      delay_clock = 0;
+      dt = clock.getDateTime();
+      h1 = (dt.hour) * 100;
+      m1 = (dt.minute);
+      my_clock = h1 + m1;
+    }
+
+    if (delay_temp == 120) {
+      delay_temp = 0;
+      temp_display = bme.readTemperature();
+      hum_display = bme.readHumidity();
+    }
+  }
+}
