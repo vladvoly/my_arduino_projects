@@ -1,0 +1,119 @@
+/*
+СХЕМА: https://i.imgur.com/sWb5KDU.jpg
+
+Список компонентов:
+• Arduino NANO v3: http://ali.pub/3y70kz
+• RGB LED: http://ali.pub/5aeve4
+• Провода: http://ali.pub/3y86fx
+• Преобразователь ЛУ: http://ali.pub/4xz4s9
+• Модуль GSM SIM800L: http://ali.pub/4rj3iz
+• Плата Micro USB: http://ali.pub/5h3j4g
+• DC - DC понижающий MP1854EN: http://ali.pub/5h3jcf
+*/
+
+//ATE0V0+CMEE=1;&W - код ошибок
+//ATE1V1+CMEE=2;&W - текст ошибок
+
+/*
+   AT+COPS?           Доступные операторы
+   AT+CSQ             Уровень сигнала
+   AT+CBC             Монитор напряжения питания модуля
+   ATA                Ответить на звонок
+   ATH0               Повесить трубку/ разорвать соединение
+   ATD+380XXXXXXXX;   Позвонить на номер +380XXXXXXXX;
+   ATD*111#  USSD запрос
+*/
+
+#define led_1 12
+#include <SoftwareSerial.h>
+SoftwareSerial vSerial(3, 2); // RX, TX
+
+String readData = "";
+String writeData = "";
+bool readFlag = 0;
+bool writeFlag = 0;
+bool led_flag = 0;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("START!");
+  vSerial.begin(9600);
+  pinMode(led_1, OUTPUT);
+  delay(10000);
+  vSerial.println("AT");
+  delay(1000);
+  vSerial.println("AT+COPS?");
+  delay(1000);
+}
+
+void readSIMserial() {
+  while (vSerial.available() > 0) {           // Пока есть данные - считываем
+    readData += (char)vSerial.read();
+    readFlag = true;                          // Данные считаны - поднимаем флаг
+    delay(2);
+  }
+}
+
+void clearReadData() {
+  if (readFlag) {                             // Флаг = 1
+    Serial.println(readData);                 // Отправить
+    readData = "";                            // Очистить
+    readFlag = false;                         // Флаг = 0
+  }
+}
+
+void writeSIMserial() {
+  while (Serial.available() > 0) {            // Пока есть данные - считываем
+    writeData += (char)Serial.read();
+    writeFlag = true;                         // Данные считаны - поднимаем флаг
+    delay(2);
+  }
+}
+
+void clearWriteData() {
+  if (writeFlag) {                              // Флаг = 1
+    vSerial.println(writeData);                 // Отправить
+    writeData = "";                             // Очистить
+    writeFlag = false;                          // Флаг = 0
+  }
+}
+
+void loop() {
+  readSIMserial();
+  writeSIMserial();
+
+  /*if (readData != "") {
+    Serial.println("===================");
+    Serial.println(readData.length());
+    for (int i = 0; i < readData.length(); i++) {
+      Serial.print(readData.charAt(i));
+      Serial.print(" - ");
+      Serial.println(i);
+      delay(5);
+    }
+    Serial.println("===================");
+
+    Serial.println("+++++++++++++++++++");
+    Serial.println(readData);
+    Serial.println("+++++++++++++++++++");
+  }*/
+
+  /*if (readData.length() == 8 && led_flag == 0) {
+    digitalWrite(led_1, 1);
+    led_flag = 1;
+    } else if (readData.length() == 14 && led_flag == 1) {
+    digitalWrite(led_1, 0);
+    led_flag = 0;
+    }*/
+
+  if (readData.charAt(2) == 'R' && led_flag == 0) {
+    digitalWrite(led_1, 1);
+    led_flag = 1;
+  } else if (readData.charAt(2) == 'N' && led_flag == 1) {
+    digitalWrite(led_1, 0);
+    led_flag = 0;
+  }
+  
+  clearReadData();
+  clearWriteData();
+}
