@@ -1,0 +1,56 @@
+/*
+СХЕМА: https://i.imgur.com/ooy3Vqw.jpg
+
+Список компонентов:
+• Датчик холла A3144: http://ali.pub/3yfas9
+• Светодиоды 5 цветов: http://ali.pub/3y80ga
+• Магниты: http://ali.pub/3y8wbi
+• Arduino nano v3: http://ali.pub/3y70kz
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Провода: http://ali.pub/3y86fx
+• Резисторы 600шт: http://ali.pub/3y80fb
+*/
+
+#define mode_num 3        // количество режимов (0,1,2)
+#define delay_time 300
+#define magnit 2
+
+byte mode = 0;
+unsigned long old_time = 0;
+bool magnit_val = 0;
+
+void setup() {
+  pinMode(magnit,INPUT);
+  Serial.begin(9600);
+}
+void loop() {
+  magnit_val = digitalRead(magnit);
+  if (magnit_val == 0 && millis()-old_time >= delay_time) {
+    switch (mode) {
+    case 0: work_0();
+      break;
+    case 1: work_1();
+      break;
+    case 2: work_2();
+      break;
+    }
+    mode++;
+    old_time = millis();
+  }
+  if (mode > mode_num) mode = 0;
+}
+void work_0() {
+  Serial.print("0 - 1");
+  Serial.print(" - ");
+  Serial.println(millis());
+}
+void work_1() {
+  Serial.print("1 - 2");
+  Serial.print(" - ");
+  Serial.println(millis());
+}
+void work_2() {
+  Serial.print("2 - 3");
+  Serial.print(" - ");
+  Serial.println(millis());
+}
