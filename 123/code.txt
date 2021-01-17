@@ -1,0 +1,30 @@
+/*
+СХЕМА: https://i.imgur.com/dQ6HMiW.jpg
+
+Список компонентов:
+• QN8027: http://ali.pub/4weco6
+• Кварц 12 МГц: http://ali.pub/4wecpj
+• Плата подложка (sop10): http://ali.pub/4wecqw
+• Штекер 3.5 мм: http://ali.pub/4wecsn
+• Arduino nano v3: http://ali.pub/3y70kz
+• Провода: http://ali.pub/3y86fx
+• Резисторы 600шт: http://ali.pub/3y80fb
+*/
+
+#include <Arduino.h>
+#include <QN8027.h>
+#include <Wire.h>
+
+QN8027 fm;
+float frequency = 88.5;
+
+void setup() {
+  fm.begin(frequency);
+  fm.setTxPower(70);
+  fm.enable(true);
+  //fm.reset();
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+}
