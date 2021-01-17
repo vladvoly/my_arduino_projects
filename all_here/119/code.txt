@@ -1,0 +1,160 @@
+/*
+СХЕМА: https://i.imgur.com/3hOUHww.jpg
+
+Список компонентов:
+• Погодный сенсор BME280: http://ali.pub/3ydpos
+• Тактовые кнопки: http://ali.pub/3y8u9m
+• LCD дисплей 1602: http://ali.pub/3y7y7z
+• Arduino nano v3: http://ali.pub/3y70kz
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Провода: http://ali.pub/3y86fx
+• Резисторы: http://ali.pub/3y80ej
+• Адаптер питания 5 - 15V, 1 - 3A: http://ali.pub/3ydrca
+*/
+
+#include <Wire.h>
+#include <SPI.h>
+
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BME280.h>
+
+#include <avr/wdt.h>
+
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+Adafruit_BME280 bme;
+
+#define led 13
+#define b1 11
+#define b2 12
+
+int temp_time = 999;
+int but_time = 250;
+byte curr_temp = 0;
+byte old_curr_temp = 0;
+byte min_temp = 0;
+byte old_min_temp = 0;
+byte max_temp = 0;
+byte old_max_temp = 0;
+bool but1 = 0;
+bool but2 = 0;
+byte i = 0;
+byte flag_lcd = 0;
+unsigned long cl_time1 = 0;
+unsigned long cl_time2 = 0;
+
+void setup() {
+  Serial.begin(9600);
+  bool status;
+
+  pinMode(led, OUTPUT);
+  pinMode(b1, INPUT);
+  pinMode(b2, INPUT);
+  digitalWrite(led, 0);
+
+  status = bme.begin();
+  if (!status) {
+    Serial.println("Could not find a valid BME280 sensor, check wiring!");
+    while (1);
+  }
+
+  lcd.init();                 //инициализация LCD (подготовка к работе)
+  lcd.backlight();
+  min_temp = bme.readTemperature() - 3;
+  max_temp = bme.readTemperature() + 3;
+  old_min_temp = min_temp - 1;
+  old_max_temp = max_temp + 1;
+}
+
+void reboot() {
+  wdt_disable();
+  wdt_enable(WDTO_60MS);
+  while (1) {}
+}
+
+void loop() {
+  if (millis() >= 604800000)reboot();
+
+  if (millis() - cl_time1 > temp_time) {
+    cl_time1 = millis();
+    curr_temp = bme.readTemperature();
+    control_led(curr_temp);
+  }
+
+  if (millis() - cl_time2 > but_time) {
+    cl_time2 = millis();
+    but1 = digitalRead(b1);
+    but2 = digitalRead(b2);
+    Serial.print(but1);
+    Serial.print("; ");
+    Serial.print(but2);
+    Serial.print("; ");
+    Serial.print(i);
+    Serial.print("; ");
+    Serial.println(flag_lcd);
+
+    if (but1 == 1 && but2 == 1) {
+      i++;
+    } else {
+      i = 0;
+    }
+    if (i == 5) {
+      flag_lcd++;
+    }
+    if (but1 == 1 && but2 == 0) {
+      old_min_temp--;
+      old_max_temp--;
+    } else if (but2 == 1 && but1 == 0) {
+      old_min_temp++;
+      old_max_temp++;
+    }
+  }
+
+  if (flag_lcd == 1 && min_temp != old_min_temp) {
+    min_temp = old_min_temp;
+    lcd.clear();
+    lcd.print("Edit min temp");
+    lcd.setCursor(0, 1);
+    lcd.print("Min temp = ");
+    lcd.print(min_temp);
+    lcd.print(" ");
+  } else if (flag_lcd == 2 && max_temp != old_max_temp) {
+    max_temp = old_max_temp;
+    lcd.clear();
+    lcd.print("Edit max temp");
+    lcd.setCursor(0, 1);
+    lcd.print("Max temp = ");
+    lcd.print(max_temp);
+    lcd.print(" ");
+  } else if (flag_lcd == 3){
+    flag_lcd = 0;
+    old_curr_temp = 0;
+  }
+
+  if (old_curr_temp != curr_temp && flag_lcd == 0) {
+    lcd.clear();
+    lcd.print("Current temp:");
+    lcd.print(curr_temp);
+    lcd.print(" ");
+    lcd.setCursor(0, 1);
+    lcd.print("MIN:");
+    lcd.print(min_temp);
+    lcd.print(" ");
+    lcd.print("; ");
+    lcd.print("MAX:");
+    lcd.print(max_temp);
+    lcd.print(" ");
+    old_curr_temp = curr_temp;
+  }
+
+}
+
+void control_led (int num) {
+  if (num >= max_temp) {
+    digitalWrite(led, 0);
+  }
+  if (num <= min_temp) {
+    digitalWrite(led, 1);
+  }
+}
