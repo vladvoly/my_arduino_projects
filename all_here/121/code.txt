@@ -1,0 +1,89 @@
+/*
+СХЕМА: https://i.imgur.com/lG590Cc.jpg
+
+Список компонентов:
+• Датчик холла A3144: http://ali.pub/3yfas9
+• Магниты: http://ali.pub/3y8wbi
+• LCD дисплей 1602: http://ali.pub/3y7y7z
+• Arduino nano v3: http://ali.pub/3y70kz
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Провода: http://ali.pub/3y86fx
+• Резисторы 600шт: http://ali.pub/3y80fb
+*/
+
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+#define wind_pin 2
+#define led_pin 13
+#define radius 0.13                                       // диаметр M
+#define time_lcd_delay 999
+
+volatile bool flag_wind = 1;
+unsigned long wind_time = 0;
+unsigned long wind_time_old = 0;
+unsigned long lcd_millis = 0;
+unsigned int time_one_turn = 0;
+float speed_m_sec = 0;
+
+void check_speed() {
+  flag_wind = 1;
+}
+
+void print_lcd(char a[], float b) {
+  lcd.clear();
+  lcd.print(a);
+  lcd.setCursor(0, 1);
+  lcd.print("Spd = ");
+  lcd.print(b);
+  lcd.print(" m/c");
+}
+
+void setup() {
+  pinMode(led_pin, OUTPUT);
+  pinMode(wind_pin, INPUT);
+  attachInterrupt(0, check_speed, FALLING);
+  Serial.begin(9600);
+
+  lcd.init();                 //инициализация LCD (подготовка к работе)
+  lcd.backlight();
+}
+void loop() {
+  wind_time = millis();
+  if (flag_wind == 1) {
+    flag_wind = 0;
+    time_one_turn = wind_time - wind_time_old;
+    wind_time_old = wind_time;
+    Serial.println(time_one_turn);
+    speed_m_sec = ((3.14 * radius) / (time_one_turn * 0.001));
+    if (millis() - lcd_millis > time_lcd_delay) {
+      lcd_millis = millis();
+      if (speed_m_sec < 1) {
+        print_lcd("Calm", speed_m_sec);                                 //Спокойный
+      } else if (speed_m_sec > 1 && speed_m_sec < 2) {
+        print_lcd("Quiet", speed_m_sec);                                //Тихий
+      } else if (speed_m_sec > 2 && speed_m_sec < 4) {
+        print_lcd("Easy", speed_m_sec);                                 //Легкий
+      } else if (speed_m_sec > 4 && speed_m_sec < 6) {
+        print_lcd("Weak", speed_m_sec);                                 //Слабый
+      } else if (speed_m_sec > 6 && speed_m_sec < 8) {
+        print_lcd("Temperate", speed_m_sec);                            //Умеренный
+      } else if (speed_m_sec > 8 && speed_m_sec < 11) {
+        print_lcd("Fresh", speed_m_sec);                                //Свежий
+      } else if (speed_m_sec > 11 && speed_m_sec < 17) {
+        print_lcd("Strong", speed_m_sec);                               //Сильный
+      } else if (speed_m_sec > 17 && speed_m_sec < 20) {
+        print_lcd("Very Strong", speed_m_sec);                          //Очень сильный
+      } else if (speed_m_sec > 20 && speed_m_sec < 23) {
+        print_lcd("Storm", speed_m_sec);                                //Шторм
+      } else if (speed_m_sec > 23 && speed_m_sec < 27) {
+        print_lcd("Heavy Storm", speed_m_sec);                          //Сильный шторм
+      } else if (speed_m_sec > 27 && speed_m_sec < 29) {
+        print_lcd("Fierce Storm", speed_m_sec);                         //Очень сильный шторм
+      } else if (speed_m_sec > 29) {
+        print_lcd("Hurricane", speed_m_sec);                            //Ураган
+      }
+      
+    }
+  }
+}
