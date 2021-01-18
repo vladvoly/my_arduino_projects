@@ -1,0 +1,241 @@
+/*
+СХЕМА: https://i.imgur.com/DVatgXV.jpg
+
+Список компонентов:
+• MP3 плеер (DF-Player): http://ali.pub/3ydplo
+• Энкодеры: http://ali.pub/3ydpi6
+• Колпачки: http://ali.pub/3ydpjj
+• LCD дисплей 1602: http://ali.pub/3y7y7z
+• Динамик: http://ali.pub/3yexhq
+• Карта памяти: http://ali.pub/3yewv6
+• Arduino nano v3: http://ali.pub/3y70kz
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Провода: http://ali.pub/3y86fx
+• Резисторы: http://ali.pub/3y80ej
+• Адаптер питания 5 - 15V, 1 - 3A: http://ali.pub/3ydrca
+*/
+
+/*int value;
+void setup(){
+  Serial.begin(9600);
+  pinMode(A0,INPUT);
+ 
+}
+void loop(){
+  value = analogRead(A0);
+  Serial.println(value);
+  delay(1000);
+}*/
+#include <EEPROM.h>
+
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27,16,2);
+
+#define pinA 2               //Пин прерывания
+#define pinB 7               //Любой другой пин
+#define pbut 6               //кнопка энкодера
+
+#include "Arduino.h"
+#include "SoftwareSerial.h"
+#include "DFRobotDFPlayerMini.h"
+
+SoftwareSerial mySoftwareSerial(4, 5); // RX, TX
+DFRobotDFPlayerMini myDFPlayer;
+void printDetail(uint8_t type, int value);
+
+int num_of_s = 41;            //number of sounds
+int actualcount = 1;          // Временная переменная определяющая изменение основного счетчика
+bool pbut_val = 0; 
+volatile int count = 1;       // Счетчик оборотов
+volatile int state = 0;       // Переменная хранящая статус вращения
+volatile int pinA_val = 0;   // Переменные хранящие состояние пина, для экономии времени
+volatile int pinB_val = 0;   // Переменные хранящие состояние пина, для экономии времени
+
+#define keyboard A0
+int value_key;
+byte s1 = 1;
+byte s2 = 1;
+byte s3 = 1;
+byte s4 = 1;
+
+byte flag = 0;
+byte volume = 10;
+
+void setup(){
+  volume = EEPROM.read(0);
+  delay(10);
+  s1 = EEPROM.read(1);
+  delay(10);
+  s2 = EEPROM.read(2);
+  delay(10);
+  s3 = EEPROM.read(3);
+  delay(10);
+  s4 = EEPROM.read(4);
+  delay(10);
+  
+  pinMode(keyboard,INPUT);
+  pinMode(pinA, INPUT);           // Пины в режим приема INPUT
+  pinMode(pinB, INPUT);           
+  pinMode(pbut, INPUT);
+  attachInterrupt(0, A, CHANGE);  // Настраиваем обработчик прерываний по изменению сигнала - в этом примере отслеживаем только 1 пин
+  Serial.begin(9600);             // Включаем Serial
+  mySoftwareSerial.begin(9600); // открываем софт-порт
+  
+  lcd.init();
+  lcd.backlight();
+  lcd.home();
+
+  Serial.println();
+  Serial.println(F("DFRobot DFPlayer Mini Demo"));
+  Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));
+  
+  if (!myDFPlayer.begin(mySoftwareSerial)) {  //Use softwareSerial to communicate with mp3.
+    Serial.println(F("Unable to begin:"));
+    Serial.println(F("1.Please recheck the connection!"));
+    Serial.println(F("2.Please insert the SD card!"));
+    while(true);
+  }
+  Serial.println(F("DFPlayer Mini online."));
+  
+  myDFPlayer.setTimeOut(500); //Set serial communictaion time out 500ms
+  delay(500);
+  myDFPlayer.volume(volume);  //Set volume value (0~30).
+  myDFPlayer.EQ(DFPLAYER_EQ_NORMAL);
+  myDFPlayer.outputDevice(DFPLAYER_DEVICE_SD);
+  }
+
+void A() {
+  pinA_val = digitalRead(pinA);            // Получаем состояние пинов A и B
+  pinB_val = digitalRead(pinB);
+  
+  cli();                                    // Запрещаем обработку прерываний, чтобы не отвлекаться
+  if (!pinA_val &&  pinB_val) state = 1;  // Если при спаде линии А на линии B лог. единица, то вращение в одну сторону
+  if (!pinA_val && !pinB_val) state = -1; // Если при спаде линии А на линии B лог. ноль, то вращение в другую сторону
+  if (pinA_val && state != 0) {
+    if (state == 1 && !pinB_val || state == -1 && pinB_val) { // Если на линии А снова единица, фиксируем шаг
+      count += state;  
+      state = 0;
+    }
+  }
+  sei();                                    // Разрешаем обработку прерываний
+  }
+void loop(){
+  value_key = analogRead(keyboard);
+  
+  if (actualcount != count) { 
+    actualcount = count;
+    if (count<1){
+       count = num_of_s;
+       actualcount = count;
+    }
+    if (count>num_of_s){
+       count = 1;
+       actualcount = count;
+    } 
+  }
+  
+  pbut_val = digitalRead(pbut);
+  if(pbut_val == 0) {
+      flag += 1;
+      Serial.println(flag);
+      lcd.clear();
+      count = 1;
+      delay(500);
+      EEPROM.update(0,volume);
+      delay(10);
+      EEPROM.update(1,s1);
+      delay(10);
+      EEPROM.update(2,s2);
+      delay(10);
+      EEPROM.update(3,s3);
+      delay(10);
+      EEPROM.update(4,s4);
+      delay(10);
+    }
+  
+  if (flag == 1) {
+    lcd.setCursor(0,0);
+    lcd.print("But1 = ");
+    lcd.print(actualcount);
+    lcd.print("  ");
+    lcd.setCursor(0,1);
+    lcd.print("NextBut:ClickBut");
+    s1 = actualcount;
+  }
+  else if(flag == 2){
+    lcd.setCursor(0,0);
+    lcd.print("But2 = ");
+    lcd.print(actualcount);
+    lcd.print("  ");
+    lcd.setCursor(0,1);
+    lcd.print("NextBut:ClickBut");
+    s2 = actualcount; 
+  }
+  else if(flag == 3){
+    lcd.setCursor(0,0);
+    lcd.print("But3 = ");
+    lcd.print(actualcount);
+    lcd.print("  ");
+    lcd.setCursor(0,1);
+    lcd.print("NextBut:ClickBut");
+    s3 = actualcount;
+  }
+  else if(flag == 4){
+    lcd.setCursor(0,0);
+    lcd.print("But4 = ");
+    lcd.print(actualcount);
+    lcd.print("  ");
+    lcd.setCursor(0,1);
+    lcd.print("eVol:ClickBut");
+    s4 = actualcount;
+  }
+  else if(flag == 5){
+    num_of_s = 30;
+    volume = actualcount;
+    lcd.setCursor(0,0);
+    lcd.print("Set volume = ");
+    lcd.print(volume);
+    lcd.print("  ");
+    lcd.setCursor(0,1);
+    lcd.print("Exit:ClickBut");
+    myDFPlayer.volume(volume);
+  }
+  else {
+    flag = 0;
+    num_of_s = 41;
+    lcd.setCursor(0,0);
+    lcd.print("B1:");
+    lcd.print(s1);
+    lcd.print(" ");
+    lcd.print("B2:");
+    lcd.print(s2);
+    lcd.print(" ");
+    lcd.print("V:");
+    lcd.print(volume);
+    lcd.print(" ");
+    lcd.setCursor(0,1);
+    lcd.print("B3:");
+    lcd.print(s3);
+    lcd.print(" ");
+    lcd.print("B4:");
+    lcd.print(s4);
+    lcd.print(" ");
+  }
+  
+  if(value_key<100){
+    myDFPlayer.playMp3Folder(s1);
+    delay(100);
+  } 
+  else if(value_key>100 && value_key<250){
+    myDFPlayer.playMp3Folder(s2);
+    delay(100);  
+  }
+  else if(value_key>250 && value_key<450){
+    myDFPlayer.playMp3Folder(s3);
+    delay(100);  
+  }
+  else if(value_key>450 && value_key<800){
+    myDFPlayer.playMp3Folder(s4);  
+    delay(100);
+  }
+}
