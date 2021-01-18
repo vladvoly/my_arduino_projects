@@ -1,0 +1,69 @@
+/*
+СХЕМА: https://i.imgur.com/CesxWfE.jpg
+
+Список компонентов:
+• RFID RC522: http://ali.pub/3y86bn
+• Arduino pro micro: http://ali.pub/3yf6qf
+• Стабилизатор питания 3.3V: http://ali.pub/5hcjp7
+• Провода: http://ali.pub/3y86fx
+*/
+
+#include <SPI.h>
+#include <MFRC522.h>
+#include "Keyboard.h"
+
+#define RST_PIN         9          // Configurable, see typical pin layout above
+#define SS_PIN          10         // Configurable, see typical pin layout above
+
+MFRC522 mfrc522(SS_PIN, RST_PIN);  // Create MFRC522 instance
+int uid_sum = 0;
+int uid_sum_old = 1;
+int uid1 = 0;
+int uid2 = 0;
+int uid3 = 0;
+int uid4 = 0;
+int ms[9] = {5424,5712,4848,5472,5568,5808,2352,2400,2448};
+int let = 0;
+int count = 0;
+
+void setup() {
+  Serial.begin(9600);
+  Keyboard.begin();
+  SPI.begin();
+  mfrc522.PCD_Init();
+
+}
+
+void loop() {
+  // Look for new cards
+  if ( ! mfrc522.PICC_IsNewCardPresent()) {
+    return;
+  }
+
+  // Select one of the cards
+  if ( ! mfrc522.PICC_ReadCardSerial()) {
+    return;
+  }
+ 
+  for(byte i=0; i<mfrc522.uid.size;i++) {
+    uid_sum += mfrc522.uid.uidByte[i];
+  }
+  if(uid_sum == uid_sum_old) count+=1;
+  if(count>=100){
+    uid_sum_old = 1;
+  }
+  if (uid_sum != uid_sum_old){
+      uid1 = mfrc522.uid.uidByte[0];
+      uid2 = mfrc522.uid.uidByte[1];
+      uid3 = mfrc522.uid.uidByte[2];
+      uid4 = mfrc522.uid.uidByte[3];
+      for(int i=0;i<9;i++){
+          let=(ms[i]/(uid2-uid1+uid4-uid3));
+          Keyboard.print(char(let));
+      }
+      Keyboard.println();
+      count = 0;  
+  }
+  uid_sum_old = uid_sum; 
+  uid_sum = 0;
+}
