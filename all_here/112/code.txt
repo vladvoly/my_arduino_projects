@@ -1,0 +1,51 @@
+/*
+СХЕМА: https://i.imgur.com/yVqBozX.jpg
+
+Список компонентов:
+• Ir led: http://ali.pub/3yf8kq
+• Транзисторы C945: http://ali.pub/3yf9h7
+• Модуль bluetooth hc-06: http://ali.pub/3y7094
+• Arduino nano v3: http://ali.pub/3y70kz
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Провода: http://ali.pub/3y86fx
+• Резисторы 600шт: http://ali.pub/3y80fb
+*/
+
+#include <IRremote.h>
+IRsend irsend;
+
+char my_data = 0;
+byte flag = 0;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("Choose a room");
+  Serial.println("-------------------------------------");
+  Serial.println("room - send 'r';kitchen - send 'k'");
+  Serial.println("-------------------------------------");
+}
+
+void loop() {
+  if (Serial.available() > 0) my_data = Serial.read();
+  else my_data = 0;
+  if (my_data == 'k') flag = 1;
+  else if (my_data == 'r') flag = 2;
+  if (flag == 1) {
+    //kitchen
+    if (my_data == 'a') irsend.sendNEC(0xFF5AA5, 32); //off
+    else if (my_data == 'b') irsend.sendNEC(0xFFD827, 32); //vol +
+    else if (my_data == 'c') irsend.sendNEC(0xFFDA25, 32); //vol -
+    else if (my_data == 'd') irsend.sendNEC(0xFF609F, 32); //C +
+    else if (my_data == 'e') irsend.sendNEC(0xFF6897, 32); //C -
+    else if (my_data == 'f') irsend.sendNEC(0xFF728D, 32); //MUTE
+  }
+  else if (flag == 2) {
+    //room
+    if (my_data == 'a') irsend.sendNEC(0x40409A65, 32); //off
+    else if (my_data == 'b') irsend.sendNEC(0x4040D827, 32); //vol +
+    else if (my_data == 'c') irsend.sendNEC(0x40405AA5, 32); //vol -
+    else if (my_data == 'd') irsend.sendNEC(0x4040609F, 32); //C +
+    else if (my_data == 'e') irsend.sendNEC(0x40406897, 32); //C -
+    else if (my_data == 'f') irsend.sendNEC(0x40409867, 32); //MUTE
+  }
+}
