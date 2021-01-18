@@ -1,0 +1,100 @@
+/*
+СХЕМА: https://i.imgur.com/X8WGTZ2.jpg
+
+Список компонентов:
+• ИК приёмник: http://ali.pub/3y7zlk
+• ИК пульт и приёмник: http://ali.pub/3y7ziu
+• Ir led: http://ali.pub/3yf8kq
+• Транзисторы C945: http://ali.pub/3yf9h7
+• Arduino nano v3: http://ali.pub/3y70kz
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Провода: http://ali.pub/3y86fx
+• Резисторы 600шт: http://ali.pub/3y80fb
+*/
+
+#include <IRremote.h>
+#define RECV_PIN 11
+#define mode_led 13
+
+IRsend irsend;
+IRrecv irrecv(RECV_PIN);
+
+decode_results results;
+unsigned long scan = 0;
+bool mode_tv = false;
+
+void setup()
+{
+  Serial.begin(9600);
+  irrecv.enableIRIn(); // Start the receiver
+  pinMode(mode_led, OUTPUT);
+}
+
+void send_code(unsigned long A){
+  irsend.sendNEC(A, 32);
+  delay(50);
+  irrecv.enableIRIn();
+  scan = 0;
+}
+
+void loop() {
+  if (irrecv.decode(&results)) {
+    scan = (results.value);
+    irrecv.resume();
+  }
+  if (scan == 0xFF22DD && mode_tv == false){
+     digitalWrite(mode_led, !mode_tv);
+     mode_tv = !mode_tv;
+     scan = 0;
+  } else if (scan == 0xFF22DD && mode_tv == true){
+     digitalWrite(mode_led, !mode_tv);
+     mode_tv = !mode_tv;
+     scan = 0;
+  }
+  //kitchen
+  if (mode_tv == 1){
+    if (scan == 0xFFA25D) send_code(0xFF5AA5);         //off
+    else if (scan == 0xFF629D) send_code(0xFF629D);    //menu
+    else if (scan == 0xFFE21D) send_code(0xFF728D);    //mute
+    else if (scan == 0xFF02FD) send_code(0xFFA05F);    //exit
+    else if (scan == 0xFFC23D) send_code(0xFF8877);    //info
+    else if (scan == 0xFFE01F) send_code(0xFF609F);    //c+
+    else if (scan == 0xFFA857) send_code(0xFF6897);    //c-
+    else if (scan == 0xFF906F) send_code(0xFF58A7);    //ok
+    else if (scan == 0xFF6897) send_code(0xFFDA25);    //v-
+    else if (scan == 0xFF9867) send_code(0xFFD827);    //v+
+    else if (scan == 0xFFB04F) send_code(0xFFF00F);    //0
+    else if (scan == 0xFF30CF) send_code(0xFFCA35);    //1
+    else if (scan == 0xFF18E7) send_code(0xFF0AF5);    //2
+    else if (scan == 0xFF7A85) send_code(0xFF08F7);    //3
+    else if (scan == 0xFF10EF) send_code(0xFFEA15);    //4
+    else if (scan == 0xFF38C7) send_code(0xFF2AD5);    //5
+    else if (scan == 0xFF5AA5) send_code(0xFF28D7);    //6
+    else if (scan == 0xFF42BD) send_code(0xFFF20D);    //7
+    else if (scan == 0xFF4AB5) send_code(0xFF32CD);    //8
+    else if (scan == 0xFF52AD) send_code(0xFF30CF);    //9 
+  } 
+  //room
+  if (mode_tv == 0){  
+    if (scan == 0xFFA25D) send_code(0x40409A65);         //off
+    else if (scan == 0xFF629D) send_code(0x40408877);    //menu
+    else if (scan == 0xFFE21D) send_code(0x40409867);    //mute
+    else if (scan == 0xFF02FD) send_code(0x4040A05F);    //exit
+    else if (scan == 0xFFC23D) send_code(0x4040A857);    //info
+    else if (scan == 0xFFE01F) send_code(0x4040609F);    //c+
+    else if (scan == 0xFFA857) send_code(0x40406897);    //c-
+    else if (scan == 0xFF906F) send_code(0x404058A7);    //ok
+    else if (scan == 0xFF6897) send_code(0x40405AA5);    //v-
+    else if (scan == 0xFF9867) send_code(0x4040D827);    //v+
+    else if (scan == 0xFFB04F) send_code(0x4040F00F);    //0
+    else if (scan == 0xFF30CF) send_code(0x40404AB5);    //1
+    else if (scan == 0xFF18E7) send_code(0x40400AF5);    //2
+    else if (scan == 0xFF7A85) send_code(0x404008F7);    //3
+    else if (scan == 0xFF10EF) send_code(0x40406A95);    //4
+    else if (scan == 0xFF38C7) send_code(0x40402AD5);    //5
+    else if (scan == 0xFF5AA5) send_code(0x404028D7);    //6
+    else if (scan == 0xFF42BD) send_code(0x4040728D);    //7
+    else if (scan == 0xFF4AB5) send_code(0x404032CD);    //8
+    else if (scan == 0xFF52AD) send_code(0x404030CF);    //9
+  }
+}
