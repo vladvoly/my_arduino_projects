@@ -1,0 +1,89 @@
+/*
+СХЕМА: https://i.imgur.com/Cp1SUHg.jpg
+
+Список компонентов:
+• Модуль NeoPixel 16: http://ali.pub/3y879a
+• Esp8266(ESP-01): http://ali.pub/3ydr0t
+• Фоторезисторы: http://ali.pub/3y89vs
+• Arduino nano v3: http://ali.pub/3y70kz
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Провода: http://ali.pub/3y86fx
+• Адаптер питания 5 - 15V, 1 - 3A: http://ali.pub/3ydrca
+*/
+
+#include <Adafruit_NeoPixel.h>
+#define PIN 6                         // номер порта к которому подключен модуль
+#define count_led 16                  // количество светодиодов 
+#define BRIGHTNESS 50
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(count_led, PIN, NEO_GRB + NEO_KHZ800); //first number change does distance between colors
+
+#define photo A0
+#define BLYNK_PRINT Serial
+#include <ESP8266_Lib.h>
+#include <BlynkSimpleShieldEsp8266.h>
+#include <SoftwareSerial.h>
+
+char auth[] = "token_token_token_token_token_token";
+char ssid[] = "wi-fi-name";
+char pass[] = "wi-fi-password";
+
+SoftwareSerial EspSerial(2, 3);         // RX, TX
+
+#define ESP8266_BAUD 9600
+ESP8266 wifi(&EspSerial);
+
+int value = 0;
+int slide = 0;
+int r = 0;
+int g = 0;
+int b = 0;
+BlynkTimer timer;
+
+void photo_sensor() {
+  value = analogRead(photo);
+  value = map(value,0,1023,0,100);
+  value = constrain(value,0,100);
+  Blynk.virtualWrite (V0, value);
+}
+
+void neo_pixel (int S,int R,int G,int B) {
+  for(int i=0;i<=S;i++) {
+    pixels.setPixelColor(i, pixels.Color(R,G,B));
+    delay(10);
+  }
+  for(int i=16;i>=S;i--) {
+    pixels.setPixelColor(i, pixels.Color(0,0,0));
+    delay(10);
+  }
+  pixels.show();  
+}
+
+BLYNK_WRITE(V1) {
+  slide = param.asInt();
+  neo_pixel(slide,r,g,b);
+}
+
+BLYNK_WRITE(V2) {   
+  r = param[0].asInt();
+  g = param[1].asInt();
+  b = param[2].asInt();
+  neo_pixel(slide,r,g,b);
+}
+
+void setup() {
+  Serial.begin(9600);
+  delay(10);
+  EspSerial.begin(ESP8266_BAUD);
+  delay(10);
+  Blynk.begin(auth, wifi, ssid, pass);
+
+  timer.setInterval(5000L, photo_sensor);
+  pinMode(photo,INPUT);
+  pixels.setBrightness(BRIGHTNESS);
+  pixels.begin();
+}
+
+void loop() {
+  Blynk.run();
+  timer.run();
+}
