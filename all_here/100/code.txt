@@ -1,0 +1,68 @@
+/*
+СХЕМА: https://i.imgur.com/zgl5WMp.jpg
+
+Список компонентов:
+• DFPlayer: http://ali.pub/3ydplo
+• Динамик: http://ali.pub/3yexhq
+• Карта памяти: http://ali.pub/3yewv6
+• Arduino nano v3: http://ali.pub/3y70kz
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Провода: http://ali.pub/3y86fx
+• Адаптер питания 5 - 15V, 1 - 3A: http://ali.pub/3ydrca
+• Резисторы: http://ali.pub/3y80ej
+*/
+
+#include "Arduino.h"
+#include "SoftwareSerial.h"
+#include "DFRobotDFPlayerMini.h"
+int i = 1;
+ 
+SoftwareSerial mySoftwareSerial(5, 6); // RX, TX
+DFRobotDFPlayerMini myDFPlayer;
+void printDetail(uint8_t type, int value);
+ 
+void setup () {
+  Serial.begin (9600); // открываем порт для консоли
+  mySoftwareSerial.begin(9600); // открываем софт-порт
+  
+  Serial.println();
+  Serial.println(F("DFRobot DFPlayer Mini Demo"));
+  Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));
+  
+  if (!myDFPlayer.begin(mySoftwareSerial)) {  //Use softwareSerial to communicate with mp3.
+    Serial.println(F("Unable to begin:"));
+    Serial.println(F("1.Please recheck the connection!"));
+    Serial.println(F("2.Please insert the SD card!"));
+    while(true);
+  }
+  Serial.println(F("DFPlayer Mini online."));
+  
+  myDFPlayer.setTimeOut(500); //Set serial communictaion time out 500ms
+  
+  //----Set volume----
+  myDFPlayer.volume(20);  //Set volume value (0~30).
+  //myDFPlayer.volumeUp(); //Volume Up
+  //myDFPlayer.volumeDown(); //Volume Down
+  
+  //----Set different EQ----
+  myDFPlayer.EQ(DFPLAYER_EQ_NORMAL);
+//  myDFPlayer.EQ(DFPLAYER_EQ_POP);
+//  myDFPlayer.EQ(DFPLAYER_EQ_ROCK);
+//  myDFPlayer.EQ(DFPLAYER_EQ_JAZZ);
+//  myDFPlayer.EQ(DFPLAYER_EQ_CLASSIC);
+//  myDFPlayer.EQ(DFPLAYER_EQ_BASS);
+  
+  //----Set device we use SD as default----
+  myDFPlayer.outputDevice(DFPLAYER_DEVICE_SD);
+}
+ 
+void loop () {
+  if (i<5){
+    myDFPlayer.playMp3Folder(i); // проигрываем файл mp3/0001.mp3
+    delay (20000);
+    i++;
+  }
+  else{
+    i = 1;
+  }
+}
