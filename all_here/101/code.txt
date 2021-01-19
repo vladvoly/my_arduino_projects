@@ -1,0 +1,61 @@
+/*
+СХЕМА: https://i.imgur.com/ouOtWzk.jpg
+
+Список компонентов:
+• Часы реального времени DS3231: http://ali.pub/3ydpn1
+• Esp8266(ESP-01): http://ali.pub/3ydr0t
+• Arduino nano v3: http://ali.pub/3y70kz
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Провода: http://ali.pub/3y86fx
+• Адаптер питания 5 - 15V, 1 - 3A: http://ali.pub/3ydrca
+• Резисторы: http://ali.pub/3y80ej
+*/
+
+#define BLYNK_PRINT Serial
+#include <ESP8266_Lib.h>
+#include <BlynkSimpleShieldEsp8266.h>
+
+#include <Wire.h>
+#include <DS3231.h>
+
+DS3231 clock;
+RTCDateTime dt;
+
+char auth[] = "token_token_token_token_token_token_token";
+char ssid[] = "wi-fi-name";
+char pass[] = "wi-fi-password";
+
+#include <SoftwareSerial.h>
+SoftwareSerial EspSerial(2, 3);         // RX, TX
+
+#define ESP8266_BAUD 9600
+ESP8266 wifi(&EspSerial);
+
+WidgetLCD lcd (V0);
+String my_time;
+String my_data;
+
+BLYNK_WRITE(V1) {
+  if (param.asInt()==1){
+    dt = clock.getDateTime();
+    my_data = String(dt.year) + "-" + String(dt.month) + "-" + String(dt.day);
+    my_time = String(dt.hour) + ":" + String(dt.minute) + ":" + String(dt.second);
+    lcd.clear();
+    lcd.print(0,0,my_data);
+    lcd.print(0,1,my_time);
+  }
+}
+
+void setup() {
+  Serial.begin(9600);
+  delay(10);
+  EspSerial.begin(ESP8266_BAUD);
+  delay(10);
+  Blynk.begin(auth, wifi, ssid, pass);
+  lcd.clear();
+  clock.begin();
+}
+
+void loop() {
+  Blynk.run();
+}
