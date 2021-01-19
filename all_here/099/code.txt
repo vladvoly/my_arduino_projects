@@ -1,0 +1,59 @@
+/*
+СХЕМА: https://i.imgur.com/poWpMFF.jpg
+
+Список компонентов:
+• Arduino pro mini: http://ali.pub/3ydptu
+• Энкодеры: http://ali.pub/3ydpi6
+• Колпачки: http://ali.pub/3ydpjj
+• USB - TTL конвертер (PL2303): http://ali.pub/3ydpsh
+• Arduino nano v3: http://ali.pub/3y70kz
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Провода: http://ali.pub/3y86fx
+• Адаптер питания 5 - 15V, 1 - 3A: http://ali.pub/3ydrca
+• Резисторы: http://ali.pub/3y80ej
+• Конденсаторы: http://ali.pub/3ydu7q
+*/
+
+#define pinA 2               //Пин прерывания
+#define pinB 7               //Любой другой пин
+#define pbut 6
+
+int actualcount = 0;          // Временная переменная определяющая изменение основного счетчика
+bool pbut_val = 0; 
+volatile int count = 0;       // Счетчик оборотов
+volatile int state = 0;       // Переменная хранящая статус вращения
+volatile int pinA_val = 0;   // Переменные хранящие состояние пина, для экономии времени
+volatile int pinB_val = 0;   // Переменные хранящие состояние пина, для экономии времени
+
+void setup() {
+  pinMode(pinA, INPUT);           // Пины в режим приема INPUT
+  pinMode(pinB, INPUT);           
+  pinMode(pbut, INPUT);
+  attachInterrupt(0, A, CHANGE);  // Настраиваем обработчик прерываний по изменению сигнала - в этом примере отслеживаем только 1 пин
+  Serial.begin(9600);             // Включаем Serial
+}
+
+void loop() {
+  if (actualcount != count) {     // Чтобы не загружать ненужным выводом в Serial, выводим состояние
+    actualcount = count;          // счетчика только в момент изменения
+    Serial.println(actualcount);
+  }
+  pbut_val = digitalRead(pbut);
+  if(pbut_val == 0) count = 0;
+}
+
+void A() {
+  pinA_val = digitalRead(pinA);            // Получаем состояние пинов A и B
+  pinB_val = digitalRead(pinB);
+  
+  cli();                                    // Запрещаем обработку прерываний, чтобы не отвлекаться
+  if (!pinA_val &&  pinB_val) state = 1;  // Если при спаде линии А на линии B лог. единица, то вращение в одну сторону
+  if (!pinA_val && !pinB_val) state = -1; // Если при спаде линии А на линии B лог. ноль, то вращение в другую сторону
+  if (pinA_val && state != 0) {
+    if (state == 1 && !pinB_val || state == -1 && pinB_val) { // Если на линии А снова единица, фиксируем шаг
+      count += state;  
+      state = 0;
+    }
+  }
+  sei();                                    // Разрешаем обработку прерываний
+}
