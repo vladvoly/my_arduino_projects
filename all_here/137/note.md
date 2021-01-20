@@ -5,7 +5,7 @@
 • **Видео:** [Здесь.](https://youtu.be/dPrCPrQ8fX8)  
 
 ### Схема
-![enter image description here](https://i.imgur.com/sWb5KDU.jpg)
+![enter image description here](https://i.imgur.com/iVwusq6.jpg)
 
 ### Список компонентов
 - Зуммер: http://ali.pub/4xz3rw  
