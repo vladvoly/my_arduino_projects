@@ -24,5 +24,3 @@
 Вопросы и пожелания - [Здесь](https://www.youtube.com/c/Bytevideo/)
 
 ---
-
-# ePN
