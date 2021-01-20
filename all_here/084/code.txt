@@ -1,0 +1,155 @@
+/*
+СХЕМА: https://i.imgur.com/1CH3GTt.jpg
+
+Список компонентов:
+• Mciro SD card модуль: http://ali.pub/3y8y15
+• Модуль ds1307: http://ali.pub/3y91al
+• Arduino Nano: http://ali.pub/3y86dz
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Провода: http://ali.pub/3y86fx
+• Фоторезисторы: http://ali.pub/3y89vs
+• Тактовые кнопки: http://ali.pub/3y8u9m
+*/
+
+#include <SPI.h>
+#include <SD.h>
+
+#include "Wire.h"
+#define DS1307_I2C_ADDRESS 0x68
+
+File myFile; 
+
+#define photo A7
+#define button 2
+int photovalue;
+volatile boolean flag = 0;
+
+byte decToBcd(byte val)
+{
+  return ( (val/10*16) + (val%10) );
+}
+
+byte bcdToDec(byte val)
+{
+  return ( (val/16*10) + (val%16) );
+}
+
+void setDateDs1307(byte second,        // 0-59
+                   byte minute,        // 0-59
+                   byte hour,          // 1-23
+                   byte dayOfWeek,     // 1-7
+                   byte dayOfMonth,    // 1-28/29/30/31
+                   byte month,         // 1-12
+                   byte year)          // 0-99
+{
+   Wire.beginTransmission(DS1307_I2C_ADDRESS);
+   Wire.write(0);
+   Wire.write(decToBcd(second));    
+   Wire.write(decToBcd(minute));
+   Wire.write(decToBcd(hour));     
+   Wire.write(decToBcd(dayOfWeek));
+   Wire.write(decToBcd(dayOfMonth));
+   Wire.write(decToBcd(month));
+   Wire.write(decToBcd(year));
+   Wire.endTransmission();
+}
+
+void getDateDs1307(byte *second,
+          byte *minute,
+          byte *hour,
+          byte *dayOfWeek,
+          byte *dayOfMonth,
+          byte *month,
+          byte *year)
+{
+
+  Wire.beginTransmission(DS1307_I2C_ADDRESS);
+  Wire.write(0);
+  Wire.endTransmission();
+
+  Wire.requestFrom(DS1307_I2C_ADDRESS, 7);
+
+  *second     = bcdToDec(Wire.read() & 0x7f);
+  *minute     = bcdToDec(Wire.read());
+  *hour       = bcdToDec(Wire.read() & 0x3f); 
+  *dayOfWeek  = bcdToDec(Wire.read());
+  *dayOfMonth = bcdToDec(Wire.read());
+  *month      = bcdToDec(Wire.read());
+  *year       = bcdToDec(Wire.read());
+}
+
+void setup()
+{
+  attachInterrupt(0,writen,RISING);
+  pinMode(photo,INPUT);
+  pinMode(button,INPUT);
+  
+  byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
+  Wire.begin();
+  Serial.begin(9600);
+
+  second = 10;
+  minute = 36;
+  hour = 13;
+  dayOfWeek = 7;
+  dayOfMonth = 30;
+  month = 12;
+  year = 18;
+  //setDateDs1307(second, minute, hour, dayOfWeek, dayOfMonth, month, year);
+
+  while (!Serial){
+   ;
+  }
+  Serial.print("Initializing SD card...");
+  if (!SD.begin(4))                                             //4 пин на плате Arduino Nano and CS on SD Card 
+  {
+    Serial.println("initialization failed!");
+    return;
+  }
+  Serial.println("initialization done.");
+  
+}
+
+void writen(){
+    flag = 1;
+  }
+
+void loop()
+{
+  byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
+  getDateDs1307(&second, &minute, &hour, &dayOfWeek, &dayOfMonth, &month, &year);
+  photovalue = analogRead(photo);
+  delay(1000);
+
+  if(flag == 1){
+      myFile = SD.open("test.txt", FILE_WRITE);
+      if (myFile) {
+                    Serial.print("Writing to test.txt...");
+                    myFile.print(hour, DEC);
+                    myFile.print(":");
+                    myFile.print(minute, DEC);
+                    myFile.print(":");
+                    myFile.print(second, DEC);
+                    myFile.print("  ");
+                    myFile.print(month, DEC);
+                    myFile.print("/");
+                    myFile.print(dayOfMonth, DEC);
+                    myFile.print("/");
+                    myFile.print(year, DEC);
+                    myFile.print("  Day_of_week:");
+                    myFile.print(dayOfWeek, DEC);
+
+                    myFile.print(" - ");
+                    myFile.print(photovalue);
+                    myFile.println(" OHM ;");
+    
+                    myFile.close();
+                    
+                    Serial.println("done.");
+        } 
+        else {
+              Serial.println("error opening test.txt");
+        }
+        flag = 0;
+  }  
+}
