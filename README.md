@@ -24,7 +24,7 @@
 - [YouTube](https://youtu.be/s6m5Xz1uP20 "Видео на YouTube") - Кастомизированный гудок для автомобиля на Arduino и DFPlayer. Версия 1 - [Схема и код](../main/all_here/111/note.md "Заметка")  
 - [YouTube](https://youtu.be/mnTJ_KKey8Y "Видео на YouTube") - Arduino Pro Micro и RFID модуль. Вход в аккаунт по физическому ключу - [Схема и код](../main/all_here/110/note.md "Заметка")  
 - [YouTube](https://youtu.be/s805qDtmGL4 "Видео на YouTube") - Кастомизированный гудок для автомобиля на Arduino и DFPlayer - [Схема и код](../main/all_here/107/note.md "Заметка")  
-- [YouTube](https://youtu.be/Mws92_Tydzc "Видео на YouTube") - PWM Arduino. Управляем скоростью оборотов кулера с помощью Arduino и энкодера - [Схема и код](../main/all_here/105/note.md "Заметка")  
+- [YouTube](https://youtu.be/Mws92_Tydzc "Видео на YouTube") - PWM Arduino. Управляем скоростью оборотов кулера с помощью Arduino и энк... - [Схема и код](../main/all_here/105/note.md "Заметка")  
 - [YouTube](https://youtu.be/W3l_Y6CUsN0 "Видео на YouTube") - RFID модуль. Генерация пароля для входа в аккаунт - [Схема и код](../main/all_here/104/note.md "Заметка")  
 - [YouTube](https://youtu.be/IH0OjdDm-tQ "Видео на YouTube") - Барометр BME280. Датчик температуры, влажности, давления - [Схема и код](../main/all_here/103/note.md "Заметка")  
 - [YouTube](https://youtu.be/mCQL9Lf8vNQ "Видео на YouTube") - Blynk. Работа с часами реального времени DS3231 - [Схема и код](../main/all_here/101/note.md "Заметка")  
