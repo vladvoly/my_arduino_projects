@@ -8,13 +8,13 @@
 ![enter image description here](https://i.imgur.com/yVqBozX.jpg)
 
 ### Список компонентов
-- Ir led: https://ru.aliexpress.com/  
-- Транзисторы C945: https://ru.aliexpress.com/  
-- Модуль bluetooth hc-06: https://ru.aliexpress.com/  
-- Arduino nano v3: https://ru.aliexpress.com/  
-- Модуль питания MB-102 + макетная плата: https://ru.aliexpress.com/  
-- Провода: https://ru.aliexpress.com/  
-- Резисторы 600шт: https://ru.aliexpress.com/  
+- Ir led: http://ali.pub/3yf8kq  
+- Транзисторы C945: http://ali.pub/3yf9h7  
+- Модуль bluetooth hc-06: http://ali.pub/3y7094  
+- Arduino nano v3: http://ali.pub/3y70kz  
+- Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5  
+- Провода: http://ali.pub/3y86fx  
+- Резисторы 600шт: http://ali.pub/3y80fb  
 
 ### Видео
 [![Video](https://img.youtube.com/vi/6rTm5rSS-HI/maxresdefault.jpg)](https://youtu.be/6rTm5rSS-HI)
