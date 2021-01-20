@@ -7,17 +7,15 @@
 - [YouTube](https://youtu.be/4hwFWdwO0B4 "Видео на YouTube") - SIM800L. Простой пример на Arduino - [Схема и код](../main/all_here/140/note.md "Заметка")  
 - [YouTube](https://youtu.be/TNvrlb5-B1U "Видео на YouTube") - Автополив на Arduino. Настройка сухости почвы без перепрошивок - [Схема и код](../main/all_here/139/note.md "Заметка")  
 - [YouTube](https://youtu.be/GQk2Z4ZU4Uc "Видео на YouTube") - Многозадачность на Arduino. Простая в реализации — полезная в использовании - [Схема и код](../main/all_here/138/note.md "Заметка")  
-- [YouTube](https://youtu.be/dPrCPrQ8fX8 "Видео на YouTube") - Азбука Морзе. Кодируем слова при помощи Arduino - [Схема и код](../main/all_here/137/note.md "Заметка")  
+- [YouTube](https://youtu.be/dPrCPrQ8fX8 "Видео на YouTube") - **Азбука Морзе. Кодируем слова при помощи Arduino** - [Схема и код](../main/all_here/137/note.md "Заметка")  
 - [YouTube](https://youtu.be/HQnpxCwDiSw "Видео на YouTube") - Автополив на Arduino. Резистивный датчик и продуманная индикация сух... - [Схема и код](../main/all_here/136/note.md "Заметка")  
-- [YouTube](https://youtu.be/zTReOaa-ki4 "Видео на YouTube") - Автомобиль на ДУ. Столкнулся с проблемой. Прошу совета у подписчиков - [Схема и код](../main/all_here/135/note.md "Заметка")  
+- [YouTube](https://youtu.be/zTReOaa-ki4 "Видео на YouTube") - **Автомобиль на ДУ. Столкнулся с проблемой. Прошу совета у подписчиков** - [Схема и код](../main/all_here/135/note.md "Заметка")  
 - [YouTube](https://youtu.be/i3KQ0hHdfM8 "Видео на YouTube") - Автополив на Arduino с энергосбережением и ёмкостным датчиком влажности п... - [Схема и код](../main/all_here/134/note.md "Заметка")  
-- [YouTube](https://youtu.be/iiePWwrGGWk "Видео на YouTube") - RFID метки. Учет посещаемости студентов - [Схема и код](../main/all_here/132/note.md "Заметка")  
+- [YouTube](https://youtu.be/iiePWwrGGWk "Видео на YouTube") - **RFID метки. Учет посещаемости студентов** - [Схема и код](../main/all_here/132/note.md "Заметка")  
 - [YouTube](https://youtu.be/vBpFZ0Q-CQk "Видео на YouTube") - Индикаторы на TM1637. Пример часов на Arduino - [Схема и код](../main/all_here/128/note.md "Заметка")  
-- [YouTube](https://youtu.be/78hnIbL0wv4 "Видео на YouTube") - QN8027. Изменяем частоту вещания FM трансмиттера - [Схема и код](../main/all_here/127/note.md "Заметка")  
+- [YouTube](https://youtu.be/78hnIbL0wv4 "Видео на YouTube") - **QN8027. Изменяем частоту вещания FM трансмиттера** - [Схема и код](../main/all_here/127/note.md "Заметка")  
+- [YouTube](https://youtu.be/3IMcBIxdN74 "Видео на YouTube") - QN8027. FM трансмиттер на Arduino - [Схема и код](../main/all_here/123/note.md "Заметка")  
 
-[123](../main/all_here/123/code.txt) - [QN8027. FM трансмиттер на Arduino](https://youtu.be/3IMcBIxdN74 "Видео YouTube")  
-Cхема и список компонентов (ссылки) - перед основным кодом.  
-• • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
 [121](../main/all_here/121/code.txt) - [Анемометр на Arduino. Датчик Холла A3144](https://youtu.be/4TB-eQktunM "Видео YouTube")  
 Cхема и список компонентов (ссылки) - перед основным кодом.  
 • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
