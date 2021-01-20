@@ -16,6 +16,8 @@
 - [YouTube](https://youtu.be/78hnIbL0wv4 "Видео на YouTube") - QN8027. Изменяем частоту вещания FM трансмиттера - [Схема и код](../main/all_here/127/note.md "Заметка")  
 - [YouTube](https://youtu.be/3IMcBIxdN74 "Видео на YouTube") - QN8027. FM трансмиттер на Arduino - [Схема и код](../main/all_here/123/note.md "Заметка")  
 
+## Этот список в процессы доработки!!!
+
 [121](../main/all_here/121/code.txt) - [Анемометр на Arduino. Датчик Холла A3144](https://youtu.be/4TB-eQktunM "Видео YouTube")  
 [119](../main/all_here/119/code.txt) - [Терморегулятор на Arduino. BME280, LCD1602, Кнопки](https://youtu.be/EIGuOLGFjwg "Видео YouTube")  
 [116](../main/all_here/116/code.txt) - [Пример терморегулятора на Arduino с использованием BME280](https://youtu.be/KHaBYqH8C88 "Видео YouTube")  
