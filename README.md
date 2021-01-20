@@ -8,7 +8,7 @@
 - [YouTube](https://youtu.be/TNvrlb5-B1U "Видео на YouTube") - Автополив на Arduino. Настройка сухости почвы без перепрошивок - [Схема и код](../main/all_here/139/note.md "Заметка")  
 - [YouTube](https://youtu.be/GQk2Z4ZU4Uc "Видео на YouTube") - Многозадачность на Arduino. Простая в реализации — полезная в использовании - [Схема и код](../main/all_here/138/note.md "Заметка")  
 - [YouTube](https://youtu.be/dPrCPrQ8fX8 "Видео на YouTube") - Азбука Морзе. Кодируем слова при помощи Arduino - [Схема и код](../main/all_here/137/note.md "Заметка")  
-- [YouTube](https://youtu.be/HQnpxCwDiSw "Видео на YouTube") - Автополив на Arduino. Резистивный датчик и продуманная индикация сухости почвы - [Схема и код](../main/all_here/136/note.md "Заметка")  
+- [YouTube](https://youtu.be/HQnpxCwDiSw "Видео на YouTube") - Автополив на Arduino. Резистивный датчик и продуманная индикация сух... - [Схема и код](../main/all_here/136/note.md "Заметка")  
 - [YouTube](https://youtu.be/zTReOaa-ki4 "Видео на YouTube") - Автомобиль на ДУ. Столкнулся с проблемой. Прошу совета у подписчиков - [Схема и код](../main/all_here/135/note.md "Заметка")  
 
 [134](../main/all_here/134/code.txt) - [Автополив на Arduino с энергосбережением и ёмкостным датчиком влажности почвы](https://youtu.be/i3KQ0hHdfM8 "Видео YouTube")  
