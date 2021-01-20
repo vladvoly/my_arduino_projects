@@ -1,0 +1,44 @@
+/*
+СХЕМА: https://i.imgur.com/DQHIJDk.jpg
+
+Список компонентов:
+• Оптопара pc817 20шт: http://ali.pub/3ydkbw
+• Arduino nano v3: http://ali.pub/3y70kz
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Провода: http://ali.pub/3y86fx
+• Резисторы: http://ali.pub/3y80ej
+*/
+
+#define photo A0
+#define imp 12
+#define in 2
+volatile boolean flag = 0;
+int value;
+
+void setup(){
+	pinMode(photo,INPUT);
+	pinMode(imp,OUTPUT);
+	pinMode(in,INPUT);
+	attachInterrupt(0,sending,RISING);
+	Serial.begin(9600);
+}
+
+void sending() {
+	flag = 1;
+}
+
+void loop() {
+	if (flag == 1){
+		value = analogRead(photo);
+		value = map(value,0,1023,0,100);
+		value = constrain(value,0,100);
+		Serial.print(value);
+		Serial.print(" - photoresistor - ");
+		Serial.println(millis());
+		flag = 0;
+	}
+	digitalWrite(imp,1);
+	delay(1);
+	digitalWrite(imp,0);
+	delay(1000);
+}
