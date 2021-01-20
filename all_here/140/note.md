@@ -1,6 +1,6 @@
 ## SIM800L. Простой пример на Arduino
 
-• **Код:** [Здесь.](..main/all_here/140/code.txt)  
+• **Код:** [Здесь.](/all_here/140/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/sWb5KDU.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/4hwFWdwO0B4)  
 
