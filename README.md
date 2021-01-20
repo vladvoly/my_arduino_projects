@@ -15,15 +15,15 @@
 - [YouTube](https://youtu.be/vBpFZ0Q-CQk "Видео на YouTube") - Индикаторы на TM1637. Пример часов на Arduino - [Схема и код](../main/all_here/128/note.md "Заметка")  
 - [YouTube](https://youtu.be/78hnIbL0wv4 "Видео на YouTube") - QN8027. Изменяем частоту вещания FM трансмиттера - [Схема и код](../main/all_here/127/note.md "Заметка")  
 - [YouTube](https://youtu.be/3IMcBIxdN74 "Видео на YouTube") - QN8027. FM трансмиттер на Arduino - [Схема и код](../main/all_here/123/note.md "Заметка")  
+- [YouTube](https://youtu.be/4TB-eQktunM "Видео на YouTube") - Анемометр на Arduino. Датчик Холла A3144 - [Схема и код](../main/all_here/121/note.md "Заметка")  
+- [YouTube](https://youtu.be/EIGuOLGFjwg "Видео на YouTube") - Терморегулятор на Arduino. BME280, LCD1602, Кнопки - [Схема и код](../main/all_here/119/note.md "Заметка")  
+- [YouTube](https://youtu.be/KHaBYqH8C88 "Видео на YouTube") - Пример терморегулятора на Arduino с использованием BME280 - [Схема и код](../main/all_here/116/note.md "Заметка")  
+- [YouTube](https://youtu.be/tiB-NgepepE "Видео на YouTube") - Датчик Холла A3144. Пример работы с Arduino - [Схема и код](../main/all_here/114/note.md "Заметка")  
+- [YouTube](https://youtu.be/h4-RB2VIxEQ "Видео на YouTube") - Универсальный инфракрасный пульт ДУ на Arduino - [Схема и код](../main/all_here/113/note.md "Заметка")  
+- [YouTube](https://youtu.be/6rTm5rSS-HI "Видео на YouTube") - Bluetooth модуль и IR LED. Простой bluetooth пульт на Arduino - [Схема и код](../main/all_here/112/note.md "Заметка")  
 
 ## Этот список в процессы доработки!!!
-
-[121](../main/all_here/121/code.txt) - [Анемометр на Arduino. Датчик Холла A3144](https://youtu.be/4TB-eQktunM "Видео YouTube")  
-[119](../main/all_here/119/code.txt) - [Терморегулятор на Arduino. BME280, LCD1602, Кнопки](https://youtu.be/EIGuOLGFjwg "Видео YouTube")  
-[116](../main/all_here/116/code.txt) - [Пример терморегулятора на Arduino с использованием BME280](https://youtu.be/KHaBYqH8C88 "Видео YouTube")  
-[114](../main/all_here/114/code.txt) - [Датчик Холла A3144. Пример работы с Arduino](https://youtu.be/tiB-NgepepE "Видео YouTube")  
-[113](../main/all_here/113/code.txt) - [Универсальный инфракрасный пульт ДУ на Arduino](https://youtu.be/h4-RB2VIxEQ "Видео YouTube")  
-[112](../main/all_here/112/code.txt) - [Bluetooth модуль и IR LED. Простой bluetooth пульт на Arduino](https://youtu.be/6rTm5rSS-HI "Видео YouTube")  
+  
 [111](../main/all_here/111/code.txt) - [Кастомизированный гудок для автомобиля на Arduino и DFPlayer. Версия 1](https://youtu.be/s6m5Xz1uP20 "Видео YouTube")  
 [110](../main/all_here/110/code.txt) - [Arduino Pro Micro и RFID модуль. Вход в аккаунт по физическому ключу](https://youtu.be/mnTJ_KKey8Y "Видео YouTube")  
 [107](../main/all_here/107/code.txt) - [Кастомизированный гудок для автомобиля на Arduino и DFPlayer](https://youtu.be/s805qDtmGL4 "Видео YouTube")  
