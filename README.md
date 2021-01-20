@@ -1,6 +1,6 @@
 # Мои Arduino проекты
 
-[![YouTube Channel](https://i.imgur.com/t2QLr0J.jpg)](https://www.youtube.com/c/bytevideo?sub_confirmation=1/)
+[![YouTube Channel](https://i.imgur.com/t2QLr0J.jpg)](https://www.youtube.com/channel/UCXFgfMGSGSHciCJDPNKFJHA?sub_confirmation=1)
 
 ### Для каждого нового видео будет создана папка (название папки = номеру видео на канале Byte).
 #### В папке будет расположен код и краткая заметка на тему ролика.
