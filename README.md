@@ -24,19 +24,16 @@
 - [YouTube](https://youtu.be/s6m5Xz1uP20 "Видео на YouTube") - Кастомизированный гудок для автомобиля на Arduino и DFPlayer. Версия 1 - [Схема и код](../main/all_here/111/note.md "Заметка")  
 - [YouTube](https://youtu.be/mnTJ_KKey8Y "Видео на YouTube") - Arduino Pro Micro и RFID модуль. Вход в аккаунт по физическому ключу - [Схема и код](../main/all_here/110/note.md "Заметка")  
 - [YouTube](https://youtu.be/s805qDtmGL4 "Видео на YouTube") - Кастомизированный гудок для автомобиля на Arduino и DFPlayer - [Схема и код](../main/all_here/107/note.md "Заметка")  
-
-## Этот список в процессы доработки!!!
-
-[105](../main/all_here/105/code.txt) - [PWM Arduino. Управляем скоростью оборотов кулера с помощью Arduino и энкодера](https://youtu.be/Mws92_Tydzc "Видео YouTube")  
-[104](../main/all_here/104/code.txt) - [RFID модуль. Генерация пароля для входа в аккаунт](https://youtu.be/W3l_Y6CUsN0 "Видео YouTube")  
-[103](../main/all_here/103/code.txt) - [Барометр BME280. Датчик температуры, влажности, давления](https://youtu.be/IH0OjdDm-tQ "Видео YouTube")  
-[101](../main/all_here/101/code.txt) - [Blynk. Работа с часами реального времени DS3231](https://youtu.be/mCQL9Lf8vNQ "Видео YouTube")  
-[100](../main/all_here/100/code.txt) - [DFPlayer. MP3 модуль для Arduino и не только](https://youtu.be/R9OFNXNmbUU "Видео YouTube")  
-[099](../main/all_here/099/code.txt) - [Энкодер EC-11. Обзор и демонстрация работы](https://youtu.be/Od3fHgCyVqA "Видео YouTube")  
-[098](../main/all_here/098/code.txt) - [Blynk. Работа с светодиодным модулем NeoPixel 16](https://youtu.be/0h35ANUYJic "Видео YouTube")  
-[096](../main/all_here/096/code.txt) - [Blynk. Arduino + ESP8266(ESP-01). Отображение данных на планшете](https://youtu.be/jGwOm6RJSXw "Видео YouTube")  
-[089](../main/all_here/089/code.txt) - [Оптопара PC817 и Arduino Nano](https://youtu.be/Qj6u54ZIWvw "Видео YouTube")  
-[084](../main/all_here/084/code.txt) - [Micro SD card адаптер для Arduino](https://youtu.be/3IWbsPj9oK0 "Видео YouTube")  
+- [YouTube](https://youtu.be/Mws92_Tydzc "Видео на YouTube") - PWM Arduino. Управляем скоростью оборотов кулера с помощью Arduino и энкодера - [Схема и код](../main/all_here/105/note.md "Заметка")  
+- [YouTube](https://youtu.be/W3l_Y6CUsN0 "Видео на YouTube") - RFID модуль. Генерация пароля для входа в аккаунт - [Схема и код](../main/all_here/104/note.md "Заметка")  
+- [YouTube](https://youtu.be/IH0OjdDm-tQ "Видео на YouTube") - Барометр BME280. Датчик температуры, влажности, давления - [Схема и код](../main/all_here/103/note.md "Заметка")  
+- [YouTube](https://youtu.be/mCQL9Lf8vNQ "Видео на YouTube") - Blynk. Работа с часами реального времени DS3231 - [Схема и код](../main/all_here/101/note.md "Заметка")  
+- [YouTube](https://youtu.be/R9OFNXNmbUU "Видео на YouTube") - DFPlayer. MP3 модуль для Arduino и не только - [Схема и код](../main/all_here/100/note.md "Заметка")  
+- [YouTube](https://youtu.be/Od3fHgCyVqA "Видео на YouTube") - Энкодер EC-11. Обзор и демонстрация работы - [Схема и код](../main/all_here/099/note.md "Заметка")  
+- [YouTube](https://youtu.be/0h35ANUYJic "Видео на YouTube") - Blynk. Работа с светодиодным модулем NeoPixel 16 - [Схема и код](../main/all_here/098/note.md "Заметка")  
+- [YouTube](https://youtu.be/jGwOm6RJSXw "Видео на YouTube") - Blynk. Arduino + ESP8266(ESP-01). Отображение данных на планшете - [Схема и код](../main/all_here/096/note.md "Заметка")  
+- [YouTube](https://youtu.be/Qj6u54ZIWvw "Видео на YouTube") - Оптопара PC817 и Arduino Nano - [Схема и код](../main/all_here/089/note.md "Заметка")  
+- [YouTube](https://youtu.be/3IWbsPj9oK0 "Видео на YouTube") - Micro SD card адаптер для Arduino - [Схема и код](../main/all_here/084/note.md "Заметка")  
 
 ---
 
