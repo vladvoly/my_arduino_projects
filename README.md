@@ -55,6 +55,8 @@
 - DS3231 Часы: http://ali.pub/5hnqee
 - LCD1602 + I2C: http://ali.pub/5hnqgx
 - Понижающие DC - DC: http://ali.pub/5hnqbv
+- Провода папа - папа: http://ali.pub/5hnr42
+- Набор резисторов: http://ali.pub/5hnr2p
 
 ### Вопрос - Ответ
 Вопрос: Как быстро найти нужное видео?  
