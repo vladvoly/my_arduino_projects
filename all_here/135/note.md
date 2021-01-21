@@ -11,6 +11,9 @@
 ![enter image description here](https://i.imgur.com/WobidNh.jpg)  
 ![enter image description here](https://i.imgur.com/GzHb9nR.jpg)
 
+### Библиотеки
+- nRF24L01: https://github.com/AlexGyver/nRF24L01
+
 ### Список компонентов
 - Arduino NANO v3: http://ali.pub/3y70kz  
 - Провода: http://ali.pub/3y86fx  
