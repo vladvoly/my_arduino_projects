@@ -11,7 +11,7 @@
 
 ### Список компонентов
 - Esp8266(ESP-01): http://ali.pub/3ydr0t
-- Arduino nano v3: http://ali.pub/3y70kz
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
 - Провода: http://ali.pub/3y86fx
 - Резисторы: http://ali.pub/3y80ej
