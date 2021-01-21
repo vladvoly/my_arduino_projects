@@ -36,15 +36,18 @@
 - [YouTube](https://youtu.be/3IWbsPj9oK0 "Видео на YouTube") - Micro SD card адаптер для Arduino - [Схема и код](../main/all_here/084/note.md "Заметка")  
 
 ### Список библиотек, которые встречаются в моих проектах
+- BLYNK: https://github.com/blynkkk/blynk-library
 - BME280: https://github.com/adafruit/Adafruit_BME280_Library
+- DF_PLAYER: https://github.com/DFRobot/DFRobotDFPlayerMini
 - DS3231: https://github.com/jarzebski/Arduino-DS3231
 - EEPROM: https://github.com/jlesech/Eeprom24C01_02
+- IR_REMOTE: https://github.com/Arduino-IRremote/Arduino-IRremote
 - LCD_I2C: https://github.com/johnrickman/LiquidCrystal_I2C
 - LOW-POWER: https://github.com/rocketscream/Low-Power
+- NEO_PIXEL: https://github.com/adafruit/Adafruit_NeoPixel
 - nRF24L01: https://github.com/AlexGyver/nRF24L01
 - QN8027: https://github.com/dragon-engineer/QN8027
 - RFID RC522: https://github.com/miguelbalboa/rfid
-- SD: https://www.arduino.cc/en/Reference/SD
 - TM1637 LED: https://github.com/mcauser/TM1637-led-driver-7-segment
 
 ### Вопрос - Ответ
