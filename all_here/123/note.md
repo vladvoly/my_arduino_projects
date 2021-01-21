@@ -1,11 +1,13 @@
 ## QN8027. FM трансмиттер на Arduino
-
 • **Код:** [Здесь.](/all_here/123/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/dQ6HMiW.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/3IMcBIxdN74)  
 
 ### Схема
 ![enter image description here](https://i.imgur.com/dQ6HMiW.jpg)
+
+### Библиотеки
+- QN8027: https://github.com/dragon-engineer/QN8027
 
 ### Список компонентов
 - QN8027: http://ali.pub/4weco6
