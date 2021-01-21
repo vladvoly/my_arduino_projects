@@ -11,7 +11,7 @@
 
 ### Список компонентов
 - RFID RC522: http://ali.pub/3y86bn  
-- Arduino pro micro: http://ali.pub/3yf6qf  
+- Arduino Pro Micro: http://ali.pub/3yf6qf  
 - Стабилизатор питания 3.3V: http://ali.pub/5hcjp7  
 - Провода: http://ali.pub/3y86fx  
 
