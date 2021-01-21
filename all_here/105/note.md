@@ -1,11 +1,13 @@
 ## PWM Arduino. Управляем скоростью оборотов кулера с помощью Arduino и энкодера
-
 • **Код:** [Здесь.](/all_here/105/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/eIg7QMW.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/Mws92_Tydzc)  
 
 ### Схема
 ![enter image description here](https://i.imgur.com/eIg7QMW.jpg)
+
+### Библиотеки
+- LCD_I2C: https://github.com/johnrickman/LiquidCrystal_I2C
 
 ### Список компонентов
 - Mosfet irfz44n: http://ali.pub/3ydijc
