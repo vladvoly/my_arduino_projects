@@ -7,6 +7,10 @@
 ### Схема
 ![enter image description here](https://i.imgur.com/3hOUHww.jpg)
 
+### Библиотеки
+- LCD_I2C: https://github.com/johnrickman/LiquidCrystal_I2C
+- BME280: https://github.com/adafruit/Adafruit_BME280_Library
+
 ### Список компонентов
 - Погодный сенсор BME280: http://ali.pub/3ydpos  
 - Тактовые кнопки: http://ali.pub/3y8u9m  
