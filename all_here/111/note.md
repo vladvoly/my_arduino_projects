@@ -1,11 +1,15 @@
 ## Кастомизированный гудок для автомобиля на Arduino и DFPlayer. Версия 1
-
 • **Код:** [Здесь.](/all_here/111/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/beJdatu.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/s6m5Xz1uP20)  
 
 ### Схема
 ![enter image description here](https://i.imgur.com/beJdatu.jpg)
+
+### Библиотеки
+- EEPROM: https://github.com/jlesech/Eeprom24C01_02
+- LCD_I2C: https://github.com/johnrickman/LiquidCrystal_I2C
+- DFPlayer: https://github.com/DFRobot/DFRobotDFPlayerMini
 
 ### Список компонентов
 - MP3 плеер (DF-Player): http://ali.pub/3ydplo
