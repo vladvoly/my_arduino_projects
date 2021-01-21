@@ -1,11 +1,13 @@
 ## DFPlayer. MP3 модуль для Arduino и не только
-
 • **Код:** [Здесь.](/all_here/100/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/zgl5WMp.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/R9OFNXNmbUU)  
 
 ### Схема
 ![enter image description here](https://i.imgur.com/zgl5WMp.jpg)
+
+### Библиотеки
+- DFPlayer: https://github.com/DFRobot/DFRobotDFPlayerMini
 
 ### Список компонентов
 - DFPlayer: http://ali.pub/3ydplo
