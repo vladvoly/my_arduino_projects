@@ -7,6 +7,9 @@
 ### Схема
 ![enter image description here](https://i.imgur.com/H8iyljh.jpg)
 
+### Библиотеки
+- RFID RC522: https://github.com/miguelbalboa/rfid
+
 ### Список компонентов
 - RFID RC522: http://ali.pub/3y86bn  
 - Arduino nano v3: http://ali.pub/3y70kz  
