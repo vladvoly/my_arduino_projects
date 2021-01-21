@@ -20,7 +20,7 @@
 - LCD дисплей 1602: http://ali.pub/3y7y7z
 - Динамик: http://ali.pub/3yexhq
 - Карта памяти: http://ali.pub/3yewv6
-- Arduino nano v3: http://ali.pub/3y70kz
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
 - Провода: http://ali.pub/3y86fx
 - Резисторы: http://ali.pub/3y80ej
