@@ -7,6 +7,9 @@
 ### Схема
 ![enter image description here](https://i.imgur.com/lG590Cc.jpg)
 
+### Библиотеки
+- LCD_I2C: https://github.com/johnrickman/LiquidCrystal_I2C
+
 ### Список компонентов
 - Датчик холла A3144: http://ali.pub/3yfas9  
 - Магниты: http://ali.pub/3y8wbi  
