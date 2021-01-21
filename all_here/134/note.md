@@ -1,5 +1,4 @@
 ## Автополив на Arduino с энергосбережением и ёмкостным датчиком влажности почвы
-
 • **Код:** [Здесь.](/all_here/134/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/XfrDTx5.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/i3KQ0hHdfM8)  
@@ -14,7 +13,7 @@
 - Водяная помпа: http://ali.pub/57ksxk  
 - Датчик влажности почвы: http://ali.pub/4xz2wl  
 - Mosfet IRFZ44N: http://ali.pub/3ydijc  
-- Arduino NANO v3: http://ali.pub/3y70kz  
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Провода: http://ali.pub/3y86fx  
 - Резисторы: http://ali.pub/3y80ej  
 
