@@ -1,5 +1,4 @@
 ## Micro SD card адаптер для Arduino
-
 • **Код:** [Здесь.](/all_here/084/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/1CH3GTt.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/3IWbsPj9oK0)  
