@@ -14,7 +14,7 @@
 - Кварц 12 МГц: http://ali.pub/4wecpj
 - Плата подложка (sop10): http://ali.pub/4wecqw
 - Штекер 3.5 мм: http://ali.pub/4wecsn
-- Arduino nano v3: http://ali.pub/3y70kz
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Провода: http://ali.pub/3y86fx
 - Резисторы 600шт: http://ali.pub/3y80fb
 
