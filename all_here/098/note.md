@@ -1,11 +1,14 @@
 ## Blynk. Работа с светодиодным модулем NeoPixel 16
-
 • **Код:** [Здесь.](/all_here/098/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/Cp1SUHg.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/0h35ANUYJic)  
 
 ### Схема
 ![enter image description here](https://i.imgur.com/Cp1SUHg.jpg)
+
+### Библиотеки
+- Blynk: https://github.com/blynkkk/blynk-library
+- NeoPixel: https://github.com/adafruit/Adafruit_NeoPixel
 
 ### Список компонентов
 - Модуль NeoPixel 16: http://ali.pub/3y879a
