@@ -1,5 +1,4 @@
 ## Энкодер EC-11. Обзор и демонстрация работы
-
 • **Код:** [Здесь.](/all_here/099/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/poWpMFF.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/Od3fHgCyVqA)  
@@ -12,7 +11,7 @@
 - Энкодеры: http://ali.pub/3ydpi6
 - Колпачки: http://ali.pub/3ydpjj
 - USB - TTL конвертер (PL2303): http://ali.pub/3ydpsh
-- Arduino nano v3: http://ali.pub/3y70kz
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
 - Провода: http://ali.pub/3y86fx
 - Адаптер питания 5 - 15V, 1 - 3A: http://ali.pub/3ydrca
