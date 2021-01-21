@@ -1,5 +1,4 @@
 ## Азбука Морзе. Кодируем слова при помощи Arduino
-
 • **Код:** [Здесь.](/all_here/137/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/iVwusq6.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/dPrCPrQ8fX8)  
@@ -9,7 +8,7 @@
 
 ### Список компонентов
 - Зуммер: http://ali.pub/4xz3rw  
-- Arduino NANO v3: http://ali.pub/3y70kz  
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Провода: http://ali.pub/3y86fx  
 - Резисторы: http://ali.pub/3y80ej  
 - RGB LED: http://ali.pub/5aeve4  
