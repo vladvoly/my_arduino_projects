@@ -12,7 +12,7 @@
 ### Список компонентов
 - Mciro SD card модуль: http://ali.pub/3y8y15
 - Модуль DS1307: http://ali.pub/3y91al
-- Arduino Nano: http://ali.pub/3y86dz
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
 - Провода: http://ali.pub/3y86fx
 - Фоторезисторы: http://ali.pub/3y89vs
