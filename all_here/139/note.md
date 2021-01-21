@@ -11,7 +11,7 @@
 - Low-Power: https://github.com/rocketscream/Low-Power
 
 ### Список компонентов
-- Arduino Nano V3: http://ali.pub/5hnrc1
+- Arduino Pro Mini: http://ali.pub/5hnscz
 - RGB LED: http://ali.pub/5aeve4  
 - Датчик влажности почвы: http://ali.pub/4xz2wl  
 - Тактовые кнопки: http://ali.pub/5aevfh  
