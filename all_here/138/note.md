@@ -1,5 +1,4 @@
 ## Многозадачность на Arduino. Простая в реализации — полезная в использовании
-
 • **Код:** [Здесь.](/all_here/138/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/nn1OADI.png)  
 • **Видео:** [Здесь.](https://youtu.be/GQk2Z4ZU4Uc)  
@@ -8,7 +7,7 @@
 ![enter image description here](https://i.imgur.com/nn1OADI.png)
 
 ### Список компонентов
-- Arduino NANO v3: http://ali.pub/3y70kz  
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Провода: http://ali.pub/3y86fx  
 - Резисторы: http://ali.pub/3y80ej  
 - RGB LED: http://ali.pub/5aeve4  
