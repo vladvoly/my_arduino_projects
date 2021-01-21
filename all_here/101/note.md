@@ -1,11 +1,14 @@
 ## Blynk. Работа с часами реального времени DS3231
-
 • **Код:** [Здесь.](/all_here/101/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/ouOtWzk.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/mCQL9Lf8vNQ)  
 
 ### Схема
 ![enter image description here](https://i.imgur.com/ouOtWzk.jpg)
+
+### Библиотеки
+- DS3231: https://github.com/jarzebski/Arduino-DS3231
+- Blynk: https://github.com/blynkkk/blynk-library
 
 ### Список компонентов
 - Часы реального времени DS3231: http://ali.pub/3ydpn1
