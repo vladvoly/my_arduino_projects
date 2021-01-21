@@ -18,7 +18,7 @@
 - Micro SD card модуль: http://ali.pub/3y8y15  
 - LCD дисплей 1602: http://ali.pub/3y7y7z  
 - Часы DS3231: http://ali.pub/4xz2ug  
-- Arduino nano v3: http://ali.pub/3y70kz  
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5  
 - Провода: http://ali.pub/3y86fx  
 
