@@ -50,6 +50,12 @@
 - RFID RC522: https://github.com/miguelbalboa/rfid
 - TM1637 LED: https://github.com/mcauser/TM1637-led-driver-7-segment
 
+### Список популярных компонентов
+- Arduino Nano V3: http://ali.pub/5hnq6m
+- DS3231 Часы: http://ali.pub/5hnqee
+- LCD1602 + I2C: http://ali.pub/5hnqgx
+- Понижающие DC - DC: http://ali.pub/5hnqbv
+
 ### Вопрос - Ответ
 Вопрос: Как быстро найти нужное видео?  
 Ответ: На этой странице нажмите сочетание клавиш Ctrl + F и начинайте вводить название видео которое ищите  
