@@ -14,7 +14,7 @@
 - ИК пульт и приёмник: http://ali.pub/3y7ziu  
 - Ir led: http://ali.pub/3yf8kq  
 - Транзисторы C945: http://ali.pub/3yf9h7  
-- Arduino nano v3: http://ali.pub/3y70kz  
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5  
 - Провода: http://ali.pub/3y86fx  
 - Резисторы 600шт: http://ali.pub/3y80fb  
