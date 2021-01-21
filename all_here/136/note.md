@@ -7,6 +7,9 @@
 ### Схема
 ![enter image description here](https://i.imgur.com/gJNpu4b.jpg)
 
+### Библиотеки
+- Low-Power: https://github.com/rocketscream/Low-Power
+
 ### Список компонентов
 - Arduino NANO v3: http://ali.pub/3y70kz  
 - RGB LED: http://ali.pub/5aeve4  
