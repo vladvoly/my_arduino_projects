@@ -6,9 +6,12 @@
 ### Схема
 ![enter image description here](https://i.imgur.com/1CH3GTt.jpg)
 
+### Библиотеки
+- DS1307 (часы работают без библиотеки, это пример кода): https://github.com/sfentress/arduino-sproutstrip
+
 ### Список компонентов
 - Mciro SD card модуль: http://ali.pub/3y8y15
-- Модуль ds1307: http://ali.pub/3y91al
+- Модуль DS1307: http://ali.pub/3y91al
 - Arduino Nano: http://ali.pub/3y86dz
 - Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
 - Провода: http://ali.pub/3y86fx
