@@ -42,7 +42,7 @@
 - [YouTube](https://youtu.be/Qj6u54ZIWvw "Видео на YouTube") - Оптопара PC817 и Arduino Nano - [Схема и код](../main/all_here/089/note.md "Заметка")  
 - [YouTube](https://youtu.be/3IWbsPj9oK0 "Видео на YouTube") - Micro SD card адаптер для Arduino - [Схема и код](../main/all_here/084/note.md "Заметка")  
 
-### Список библиотек, которые встречаются в моих проектах.
+### Список библиотек, которые встречаются в моих проектах
 - BME280: https://github.com/adafruit/Adafruit_BME280_Library
 - DS3231: https://github.com/jarzebski/Arduino-DS3231
 - EEPROM: https://github.com/jlesech/Eeprom24C01_02
