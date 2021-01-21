@@ -13,7 +13,7 @@
 ### Список компонентов
 - Часы реального времени DS3231: http://ali.pub/3ydpn1
 - Esp8266(ESP-01): http://ali.pub/3ydr0t
-- Arduino nano v3: http://ali.pub/3y70kz
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
 - Провода: http://ali.pub/3y86fx
 - Адаптер питания 5 - 15V, 1 - 3A: http://ali.pub/3ydrca
