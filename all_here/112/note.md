@@ -1,11 +1,13 @@
 ## Bluetooth модуль и IR LED. Простой bluetooth пульт на Arduino
-
 • **Код:** [Здесь.](/all_here/112/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/yVqBozX.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/6rTm5rSS-HI)  
 
 ### Схема
 ![enter image description here](https://i.imgur.com/yVqBozX.jpg)
+
+### Библиотеки
+- IRremote: https://github.com/Arduino-IRremote/Arduino-IRremote
 
 ### Список компонентов
 - Ir led: http://ali.pub/3yf8kq  
