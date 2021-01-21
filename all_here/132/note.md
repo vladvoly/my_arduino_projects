@@ -1,11 +1,16 @@
 ## RFID метки. Учет посещаемости студентов
-
 • **Код:** [Здесь.](/all_here/132/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/7g9NzOR.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/iiePWwrGGWk)  
 
 ### Схема
 ![enter image description here](https://i.imgur.com/7g9NzOR.jpg)
+
+### Библиотеки
+- SD: https://www.arduino.cc/en/Reference/SD
+- RFID RC522: https://github.com/miguelbalboa/rfid
+- DS3231: https://github.com/jarzebski/Arduino-DS3231
+- LCD_I2C: https://github.com/johnrickman/LiquidCrystal_I2C
 
 ### Список компонентов
 - RFID Reader: http://ali.pub/4xz3vl  
