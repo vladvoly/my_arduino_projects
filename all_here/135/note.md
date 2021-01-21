@@ -1,5 +1,4 @@
 ## Автомобиль на ДУ. Столкнулся с проблемой. Прошу совета у подписчиков
-
 • **Код пульта:** [Здесь.](/all_here/135/code_rc.txt)  
 • **Код машинки:** [Здесь.](/all_here/135/code_car.txt)  
 • **Схема в хорошем качестве пульта:** [Здесь.](https://i.imgur.com/WobidNh.jpg)  
@@ -15,7 +14,7 @@
 - nRF24L01: https://github.com/AlexGyver/nRF24L01
 
 ### Список компонентов
-- Arduino NANO v3: http://ali.pub/3y70kz  
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Провода: http://ali.pub/3y86fx  
 - Резисторы: http://ali.pub/3y80ej  
 - Адаптер для nRF24L01+: http://ali.pub/57ks47  
