@@ -1,11 +1,13 @@
 ## Blynk. Arduino + ESP8266(ESP-01). Отображение данных на планшете
-
 • **Код:** [Здесь.](/all_here/096/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/7hOHsem.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/jGwOm6RJSXw)  
 
 ### Схема
 ![enter image description here](https://i.imgur.com/7hOHsem.jpg)
+
+### Библиотеки
+- Blynk: https://github.com/blynkkk/blynk-library
 
 ### Список компонентов
 - Esp8266(ESP-01): http://ali.pub/3ydr0t
