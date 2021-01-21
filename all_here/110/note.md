@@ -1,11 +1,13 @@
 ## Arduino Pro Micro и RFID модуль. Вход в аккаунт по физическому ключу
-
 • **Код:** [Здесь.](/all_here/110/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/CesxWfE.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/mnTJ_KKey8Y)  
 
 ### Схема
 ![enter image description here](https://i.imgur.com/CesxWfE.jpg)
+
+### Библиотеки
+- RFID RC522: https://github.com/miguelbalboa/rfid
 
 ### Список компонентов
 - RFID RC522: http://ali.pub/3y86bn  
