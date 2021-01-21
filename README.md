@@ -3,13 +3,6 @@
 [![YouTube Channel](https://i.imgur.com/t2QLr0J.jpg)](https://www.youtube.com/channel/UCXFgfMGSGSHciCJDPNKFJHA?sub_confirmation=1)
 
 ---
-### Вопрос - Ответ
-Вопрос: Как быстро найти нужное видео?  
-Ответ: На этой странице нажмите сочетание клавиш Ctrl + F и начинайте вводить название видео которое ищите  
-  
-Вопрос: Где код?  
-Ответ: Нажми на синий текст "Схема и код"  
-
 ### Список видео, кода и схем
 - [YouTube](https://youtu.be/4hwFWdwO0B4 "Видео на YouTube") - SIM800L. Простой пример на Arduino - [Схема и код](../main/all_here/140/note.md "Заметка")  
 - [YouTube](https://youtu.be/TNvrlb5-B1U "Видео на YouTube") - Автополив на Arduino. Настройка сухости почвы без перепрошивок - [Схема и код](../main/all_here/139/note.md "Заметка")  
@@ -53,6 +46,13 @@
 - RFID RC522: https://github.com/miguelbalboa/rfid
 - SD: https://www.arduino.cc/en/Reference/SD
 - TM1637 LED: https://github.com/mcauser/TM1637-led-driver-7-segment
+
+### Вопрос - Ответ
+Вопрос: Как быстро найти нужное видео?  
+Ответ: На этой странице нажмите сочетание клавиш Ctrl + F и начинайте вводить название видео которое ищите  
+  
+Вопрос: Где код?  
+Ответ: Нажми на синий текст "Схема и код"  
 
 ---
 
