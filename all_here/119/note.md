@@ -1,5 +1,4 @@
 ## Терморегулятор на Arduino. BME280, LCD1602, Кнопки
-
 • **Код:** [Здесь.](/all_here/119/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/3hOUHww.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/EIGuOLGFjwg)  
@@ -15,7 +14,7 @@
 - Погодный сенсор BME280: http://ali.pub/3ydpos  
 - Тактовые кнопки: http://ali.pub/3y8u9m  
 - LCD дисплей 1602: http://ali.pub/3y7y7z  
-- Arduino nano v3: http://ali.pub/3y70kz  
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5  
 - Провода: http://ali.pub/3y86fx  
 - Резисторы: http://ali.pub/3y80ej  
