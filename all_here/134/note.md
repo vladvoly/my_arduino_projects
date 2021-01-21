@@ -7,6 +7,9 @@
 ### Схема
 ![enter image description here](https://i.imgur.com/XfrDTx5.jpg)
 
+### Библиотеки
+- Low-Power: https://github.com/rocketscream/Low-Power
+
 ### Список компонентов
 - Водяная помпа: http://ali.pub/57ksxk  
 - Датчик влажности почвы: http://ali.pub/4xz2wl  
