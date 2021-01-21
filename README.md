@@ -1,11 +1,9 @@
-# Мои Arduino проекты
+# Мои Arduino Проекты
 
 [![YouTube Channel](https://i.imgur.com/t2QLr0J.jpg)](https://www.youtube.com/channel/UCXFgfMGSGSHciCJDPNKFJHA?sub_confirmation=1)
 
-### Для каждого нового видео будет создана папка (название папки = номеру видео на канале Byte).
-#### В папке будет расположен код и краткая заметка на тему ролика.
 ---
-
+### Список видео, кода и схем
 - [YouTube](https://youtu.be/4hwFWdwO0B4 "Видео на YouTube") - SIM800L. Простой пример на Arduino - [Схема и код](../main/all_here/140/note.md "Заметка")  
 - [YouTube](https://youtu.be/TNvrlb5-B1U "Видео на YouTube") - Автополив на Arduino. Настройка сухости почвы без перепрошивок - [Схема и код](../main/all_here/139/note.md "Заметка")  
 - [YouTube](https://youtu.be/GQk2Z4ZU4Uc "Видео на YouTube") - Многозадачность на Arduino. Простая в реализации — полезная в использовании - [Схема и код](../main/all_here/138/note.md "Заметка")  
@@ -37,9 +35,21 @@
 - [YouTube](https://youtu.be/Qj6u54ZIWvw "Видео на YouTube") - Оптопара PC817 и Arduino Nano - [Схема и код](../main/all_here/089/note.md "Заметка")  
 - [YouTube](https://youtu.be/3IWbsPj9oK0 "Видео на YouTube") - Micro SD card адаптер для Arduino - [Схема и код](../main/all_here/084/note.md "Заметка")  
 
+### Список библиотек, которые встречаются в моих проектах.
+- BME280: https://github.com/adafruit/Adafruit_BME280_Library
+- DS3231: https://github.com/jarzebski/Arduino-DS3231
+- EEPROM: https://github.com/jlesech/Eeprom24C01_02
+- LCD_I2C: https://github.com/johnrickman/LiquidCrystal_I2C
+- LOW-POWER: https://github.com/rocketscream/Low-Power
+- nRF24L01: https://github.com/AlexGyver/nRF24L01
+- QN8027: https://github.com/dragon-engineer/QN8027
+- RFID RC522: https://github.com/miguelbalboa/rfid
+- SD: https://www.arduino.cc/en/Reference/SD
+- TM1637 LED: https://github.com/mcauser/TM1637-led-driver-7-segment
+
 ---
 
-Вопросы и пожелания по коду/схеме - [Здесь](https://www.youtube.com/c/bytevideo/)
+Вопросы и пожелания - [Здесь](https://www.youtube.com/c/bytevideo/)
 
 ---
-Текст будет дополняться. Удачи!  
+
