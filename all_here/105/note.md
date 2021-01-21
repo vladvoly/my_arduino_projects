@@ -14,7 +14,7 @@
 - Колпачки: http://ali.pub/3ydpjj
 - LCD дисплей 1602: http://ali.pub/3y7y7z
 - Энкодеры: http://ali.pub/3ydpi6
-- Arduino nano v3: http://ali.pub/3y70kz
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
 - Провода: http://ali.pub/3y86fx
 - Адаптер питания 5 - 15V, 1 - 3A: http://ali.pub/3ydrca
