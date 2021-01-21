@@ -7,6 +7,10 @@
 ### Схема
 ![enter image description here](https://i.imgur.com/DVatgXV.jpg)
 
+### Библиотеки
+- LCD_I2C: https://github.com/johnrickman/LiquidCrystal_I2C
+- DFPlayer: https://github.com/DFRobot/DFRobotDFPlayerMini
+
 ### Список компонентов
 - MP3 плеер (DF-Player): http://ali.pub/3ydplo
 - Энкодеры: http://ali.pub/3ydpi6
