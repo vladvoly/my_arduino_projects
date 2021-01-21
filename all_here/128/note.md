@@ -15,7 +15,7 @@
 - Индикатор TM1637 LED: http://ali.pub/4xz3ik  
 - Часы DS3231: http://ali.pub/4xz2ug  
 - Погодный сенсор BME280: http://ali.pub/3ydpos  
-- Arduino nano v3: http://ali.pub/3y70kz  
+- Arduino Nano V3: http://ali.pub/5hnrc1
 - Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5  
 - Провода: http://ali.pub/3y86fx  
 
