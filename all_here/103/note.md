@@ -1,11 +1,14 @@
 ## Барометр BME280. Датчик температуры, влажности, давления
-
 • **Код:** [Здесь.](/all_here/103/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/jTAy3R5.jpg)  
 • **Видео:** [Здесь.](https://youtu.be/IH0OjdDm-tQ)  
 
 ### Схема
 ![enter image description here](https://i.imgur.com/jTAy3R5.jpg)
+
+### Библиотеки
+- Low-Power: https://github.com/rocketscream/Low-Power
+- BME280: https://github.com/adafruit/Adafruit_BME280_Library
 
 ### Список компонентов
 - Погодный сенсор BME280: http://ali.pub/3ydpos
