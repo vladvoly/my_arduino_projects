@@ -1,0 +1,28 @@
+#define sensor A7
+#define led_r 9
+#define led_g 10
+#define led_b 11
+
+int value[3] = {0,0,0};
+int delayyy = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(sensor, INPUT);
+  pinMode(led_r, OUTPUT);
+  pinMode(led_g, OUTPUT);
+  pinMode(led_b, OUTPUT);
+  randomSeed(analogRead(sensor));
+}
+
+void loop() {
+  value[0] = random(256);
+  value[1] = random(256);
+  value[2] = random(256);
+  delayyy = random(10,101);
+  
+  analogWrite(led_r, value[0]);
+  analogWrite(led_g, value[1]);
+  analogWrite(led_b, value[2]);
+  delay(delayyy);
+}
