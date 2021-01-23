@@ -1,0 +1,73 @@
+#define sensor A7
+#define led_r 9
+#define led_g 10
+#define led_b 11
+
+int value = 0;
+bool flag = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(sensor, INPUT);
+  pinMode(led_r, OUTPUT);
+  pinMode(led_g, OUTPUT);
+  pinMode(led_b, OUTPUT);
+}
+
+void loop() {
+                                                    /////////////////через резистор
+  /*value = map(analogRead(sensor), 0, 1023, 0, 1532);     //конвертируем в проценты от 0 до 100
+    value = constrain(value, 0, 1532);*/
+                                                        //////////////////туда - сюда
+  if (value != 1532 && flag == 0) {
+    value += 1;
+  }
+  if (value == 1532) {
+    flag = 1;
+  }
+  if (value != 0 && flag == 1) {
+    value -= 1;
+  }
+  if (value == 0) {
+    flag = 0;
+  }
+                                                  /////////////////////////круговорот
+  /*if (value != 1532) {
+    value += 1;
+    }
+    if (value == 1532) {
+    value =  0;
+    }*/
+
+  if (value <= 0) {
+    analogWrite(led_r, 255);
+    analogWrite(led_g, 0);
+    analogWrite(led_b, 0);
+  } else if (value > 0 && value < 255) {
+    analogWrite(led_r, 255);
+    analogWrite(led_g, value);
+    analogWrite(led_b, 0);
+  } else if (value > 255 && value < 511) {
+    analogWrite(led_g, 255);
+    analogWrite(led_r, 511 - value);
+    analogWrite(led_b, 0);
+  } else if (value > 511 && value < 767) {
+    analogWrite(led_g, 255);
+    analogWrite(led_b, value - 511);
+    analogWrite(led_r, 0);
+  } else if (value > 767 && value < 1023) {
+    analogWrite(led_r, 0);
+    analogWrite(led_b, 255);
+    analogWrite(led_g, 1023 - value);
+  } else if (value > 1023 && value < 1279) {
+    analogWrite(led_b, 255);
+    analogWrite(led_g, 0);
+    analogWrite(led_r, value - 1024);
+  } else if (value > 1279 && value < 1535) {
+    analogWrite(led_r, 255);
+    analogWrite(led_g, 0);
+    analogWrite(led_b, 1535 - value);
+  }
+  //Serial.println(value);
+  delay(1);                                 //скорость 1 - быстро, 10 - медленно
+}
