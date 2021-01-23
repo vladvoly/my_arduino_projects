@@ -1,6 +1,6 @@
 ## RGB LED Эффекты. Пример на Arduino
-• **Код wave (1):** [Здесь.](/all_here/141/code_LW.txt)
-• **Код random (2):** [Здесь.](/all_here/141/code_LR.txt)
+• **Код wave (1):** [Здесь.](/all_here/141/code_LW.txt)  
+• **Код random (2):** [Здесь.](/all_here/141/code_LR.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/nn1OADI.png)  
 • **Видео:** [Здесь.](https://youtu.be/GQk2Z4ZU4Uc)  
 
