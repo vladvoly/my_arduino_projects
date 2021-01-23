@@ -2,7 +2,7 @@
 • **Код wave (1):** [Здесь.](/all_here/141/code_LW.txt)  
 • **Код random (2):** [Здесь.](/all_here/141/code_LR.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/nn1OADI.png)  
-• **Видео:** [Здесь.](https://youtu.be/GQk2Z4ZU4Uc)  
+• **Видео:** [Здесь.](https://youtu.be/aATg9qqujs4)  
 
 ### Схема
 ![enter image description here](https://i.imgur.com/nn1OADI.png)
@@ -15,7 +15,7 @@
 - Макетная плата: http://ali.pub/3y86f5  
 
 ### Видео
-[![Video](https://img.youtube.com/vi/GQk2Z4ZU4Uc/maxresdefault.jpg)](https://youtu.be/GQk2Z4ZU4Uc)
+[![Video](https://img.youtube.com/vi/aATg9qqujs4/maxresdefault.jpg)](https://youtu.be/aATg9qqujs4)
 
 ---
 
