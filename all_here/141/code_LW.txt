@@ -1,4 +1,3 @@
-
 /*
 СХЕМА: https://i.imgur.com/nn1OADI.png
 
