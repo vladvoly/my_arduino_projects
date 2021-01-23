@@ -1,3 +1,15 @@
+
+/*
+СХЕМА: https://i.imgur.com/nn1OADI.png
+
+Список компонентов:
+• Arduino NANO v3: http://ali.pub/3y70kz
+• Провода: http://ali.pub/3y86fx
+• Резисторы: http://ali.pub/3y80ej
+• RGB LED: http://ali.pub/5aeve4
+• Макетная плата: http://ali.pub/3y86f5
+*/
+
 #define sensor A7
 #define led_r 9
 #define led_g 10
