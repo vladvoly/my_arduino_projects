@@ -4,7 +4,7 @@
 
 ---
 ### Список видео, кода и схем
-- [YouTube](https://youtu.be/ "Видео на YouTube") - Автопоказ температуры и времени. Пример на Arduino - [Схема и код](../main/all_here/142/note.md "Заметка")  
+- [YouTube](https://youtu.be/TkHT-4lZhZo "Видео на YouTube") - Автопоказ температуры и времени. Пример на Arduino - [Схема и код](../main/all_here/142/note.md "Заметка")  
 - [YouTube](https://youtu.be/aATg9qqujs4 "Видео на YouTube") - RGB LED Эффекты. Пример на Arduino - [Схема и код](../main/all_here/141/note.md "Заметка")  
 - [YouTube](https://youtu.be/4hwFWdwO0B4 "Видео на YouTube") - SIM800L. Простой пример на Arduino - [Схема и код](../main/all_here/140/note.md "Заметка")  
 - [YouTube](https://youtu.be/TNvrlb5-B1U "Видео на YouTube") - Автополив на Arduino. Настройка сухости почвы без перепрошивок - [Схема и код](../main/all_here/139/note.md "Заметка")  
