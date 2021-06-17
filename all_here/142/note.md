@@ -1,7 +1,7 @@
 ## Автопоказ температуры и времени. Пример на Arduino
 • **Код:** [Здесь.](/all_here/142/code.txt)  
 • **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/TkkoJrO.jpg)  
-• **Видео:** [Здесь.](https://youtu.be/)  
+• **Видео:** [Здесь.](https://youtu.be/TkHT-4lZhZo)  
 
 ### Схема
 ![enter image description here](https://i.imgur.com/TkkoJrO.jpg)
@@ -23,7 +23,7 @@
 - Провода: http://ali.pub/3y86fx
 
 ### Видео
-[![Video](https://img.youtube.com/vi//maxresdefault.jpg)](https://youtu.be/)
+[![Video](https://img.youtube.com/vi/TkHT-4lZhZo/maxresdefault.jpg)](https://youtu.be/TkHT-4lZhZo)
 
 ---
 
