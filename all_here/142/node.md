@@ -1,0 +1,32 @@
+## Автопоказ температуры и времени. Пример на Arduino
+• **Код:** [Здесь.](/all_here/142/code.txt)  
+• **Схема в хорошем качестве:** [Здесь.](https://i.imgur.com/TkkoJrO.jpg)  
+• **Видео:** [Здесь.](https://youtu.be/)  
+
+### Схема
+![enter image description here](https://i.imgur.com/TkkoJrO.jpg)
+
+### Библиотеки
+- DS3231: https://github.com/jarzebski/Arduino-DS3231
+- BME280: https://github.com/adafruit/Adafruit_BME280_Library
+- LCD_I2C: https://github.com/johnrickman/LiquidCrystal_I2C
+- LOW-POWER: https://github.com/rocketscream/Low-Power
+
+### Список компонентов
+- Arduino NANO v3: http://ali.pub/3y70kz
+- Датчик движения HC-SR501: http://ali.pub/57ks8a
+- Погодный сенсор BME280: http://ali.pub/3ydpos
+- LCD дисплей 1602: http://ali.pub/3y7y7z
+- Часы DS3231: http://ali.pub/4xz2ug
+- Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+- Адаптер питания 5 - 15V, 1 - 3A: http://ali.pub/3ydrca
+- Провода: http://ali.pub/3y86fx
+
+### Видео
+[![Video](https://img.youtube.com/vi//maxresdefault.jpg)](https://youtu.be/)
+
+---
+
+Вопросы и пожелания - [Здесь](https://www.youtube.com/c/Bytevideo/)
+
+---
