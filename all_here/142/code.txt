@@ -1,0 +1,90 @@
+/*
+СХЕМА: https://i.imgur.com/TkkoJrO.jpg
+
+Список компонентов:
+• Arduino NANO v3: http://ali.pub/3y70kz
+• Датчик движения HC-SR501: http://ali.pub/57ks8a
+• Погодный сенсор BME280: http://ali.pub/3ydpos
+• LCD дисплей 1602: http://ali.pub/3y7y7z
+• Часы DS3231: http://ali.pub/4xz2ug
+• Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+• Адаптер питания 5 - 15V, 1 - 3A: http://ali.pub/3ydrca
+• Провода: http://ali.pub/3y86fx
+*/
+
+#include <Wire.h>
+#include <SPI.h>
+#include "LowPower.h"
+#include <DS3231.h>
+
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BME280.h>
+#define SEALEVELPRESSURE_HPA (1013.25)
+
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+DS3231 clock;
+RTCDateTime dt;
+
+Adafruit_BME280 bme; // I2C
+#define wakeUpPin 2
+unsigned long m1 = 0;
+
+void wakeUp()
+{
+  // Just a handler for the pin interrupt.
+}
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(wakeUpPin, INPUT);
+  clock.begin();
+  //clock.setDateTime(__DATE__, __TIME__);
+
+  bool status;
+  status = bme.begin();
+  if (!status) {
+    Serial.println("Could not find a valid BME280 sensor, check wiring!");
+    while (1);
+  }
+
+  lcd.init();
+}
+
+void loop() {
+  attachInterrupt(0, wakeUp, LOW);
+  LowPower.powerDown(SLEEP_FOREVER, ADC_OFF, BOD_OFF);
+  detachInterrupt(0);
+  if ((digitalRead(wakeUpPin) == HIGH)) {
+    printValues();
+    delay(100);
+  }
+  if (millis() - m1 > 5000) {
+    lcd.noBacklight();
+    lcd.clear();
+    m1 = millis();
+  }
+}
+
+void printValues() {
+  dt = clock.getDateTime();
+  lcd.backlight();
+  lcd.print("T=");
+  lcd.print(int(bme.readTemperature()));
+  lcd.print("C ");
+  lcd.print("H=");
+  lcd.print(int(bme.readHumidity()));
+  lcd.print("% ");
+  lcd.setCursor(0, 1);
+  lcd.print(dt.day);
+  lcd.print("/");
+  lcd.print(dt.month);
+  lcd.print("/");
+  lcd.print(dt.year - 2000);
+  lcd.print(" ");
+  lcd.print(dt.hour);
+  lcd.print(":");
+  lcd.print(dt.minute);
+  lcd.print(" ");
+}
