@@ -13,14 +13,14 @@
 - LOW-POWER: https://github.com/rocketscream/Low-Power
 
 ### Список компонентов
-- Arduino NANO v3: http://ali.pub/3y70kz
+- Arduino NANO v3: https://alii.pub/6u5ue7
 - Датчик движения HC-SR501: http://ali.pub/57ks8a
 - Погодный сенсор BME280: http://ali.pub/3ydpos
 - LCD дисплей 1602: http://ali.pub/3y7y7z
 - Часы DS3231: http://ali.pub/4xz2ug
-- Модуль питания MB-102 + макетная плата: http://ali.pub/3y86f5
+- Модуль питания MB-102 + макетная плата: https://alii.pub/6u5uih
 - Адаптер питания 5 - 15V, 1 - 3A: http://ali.pub/3ydrca
-- Провода: http://ali.pub/3y86fx
+- Провода: https://alii.pub/6u5ukm
 
 ### Видео
 [![Video](https://img.youtube.com/vi/TkHT-4lZhZo/maxresdefault.jpg)](https://youtu.be/TkHT-4lZhZo)
